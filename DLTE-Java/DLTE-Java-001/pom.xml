@@ -29,7 +29,13 @@
         <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-          
+          <configuration>
+            <archive>
+              <manifest>
+                <mainClass>basics.service.App</mainClass>
+              </manifest>
+            </archive>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
