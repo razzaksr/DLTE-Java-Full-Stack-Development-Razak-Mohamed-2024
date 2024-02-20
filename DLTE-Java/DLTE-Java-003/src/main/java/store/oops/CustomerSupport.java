@@ -16,7 +16,9 @@ public class CustomerSupport {
         CustomerSupport support=new CustomerSupport();
         support.findEarlyExpire(myBank);
         support.findBillDate(myBank,new Date(2024,3,5),new Date(2024,3,18));
-
+        support.list(myBank);
+        support.sortingCustomers(myBank);
+        support.list(myBank);
     }
 
     public void findEarlyExpire(CreditCard[] customers){
@@ -32,6 +34,26 @@ public class CustomerSupport {
         for(CreditCard each:customers){
             if(each.getDateOfBillGeneration().getDate()>=start.getDate()&&each.getDateOfBillGeneration().getDate()<=end.getDate()){
                 System.out.println(each.getCreditCardHolder()+" "+each.getDateOfBillGeneration().getDate());
+            }
+        }
+    }
+
+    public void list(CreditCard[] customers){
+        System.out.println("Available customers");
+        for(CreditCard each:customers){
+            System.out.println(each);
+        }
+    }
+
+    public void sortingCustomers(CreditCard[] customers){
+        CreditCard backup=null;
+        for(int select=0;select<customers.length;select++){
+            for(int next=select+1;next<customers.length;next++){
+                if(customers[select].getCreditCardHolder().compareTo(customers[next].getCreditCardHolder())>0){
+                    backup=customers[select];
+                    customers[select]=customers[next];
+                    customers[next]=backup;
+                }
             }
         }
     }
