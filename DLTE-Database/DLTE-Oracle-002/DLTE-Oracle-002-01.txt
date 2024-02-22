@@ -1,0 +1,125 @@
+		Procedures:
+			write complex/repeated queries in procedure to compile once and execute whenever it requires
+			network traffic
+			compilation
+			exception handling
+			
+synatax of procedure:			
+			create or replace procedure PROCEDURE_NAME(paramaters)
+			begin
+			end
+			/
+
+-- read
+create or replace procedure read_bankers_info(
+    emp_id number,
+    emp_name out varchar2
+)
+as 
+begin
+    select banker_name into emp_name from bankers where banker_id=emp_id;
+end;
+/
+
+-- read with exception handing
+create or replace procedure read_bankers_info(
+    emp_id number,
+    emp_name out varchar2,
+    emp_info out varchar2
+)
+as 
+begin
+    select banker_name into emp_name from bankers where banker_id=emp_id;
+    emp_info := 'Banker fetched successfully';
+exception
+    when no_data_found then
+    emp_info := 'No Banker matched';
+    when others then
+    emp_info := 'Error due to '|| SQLERRM;
+end;
+/
+
+variable found_one varchar2(255);
+variable info_or_error varchar2(255);
+
+execute read_bankers_info(139001,:found_one,:info_or_error);
+
+print found_one;
+print info_or_error;
+
+
+-- update
+
+create or replace procedure update_customers(
+    acc_num number,
+    acc_name varchar2,
+    acc_bal float,
+    acc_cont number,
+    acc_pass varchar2,
+    acc_info out varchar2
+)
+as 
+begin
+update customers set account_holder=acc_name,contact=acc_cont,account_passcode=acc_pass, account_balance=acc_bal where account_number=acc_num;
+acc_info := 'KYC updated';
+exception
+when others then
+acc_info := 'Updation failed due to '||SQLERRM;
+end;
+/
+
+variable err_or_info varchar2(255);
+execute update_customers(1011,'Elroy',10000.9,876787678,'elroymite',:err_or_info);
+print err_or_info;
+
+
+drop procedure update_customers;
+
+-- triggers
+
+time	>> before, after
+event	>> insert, update, delete
+
+syntax:
+create or replace trigger TRIGGER_NAME
+TIME EVENT on TABLE
+for each row
+CONDITION
+begin
+.....
+end;
+/
+
+
+-- DDL: trigger before insert
+
+create table borrowers(borrower_id number not null,borrower_name varchar(255), borrower_contact number);
+
+create or replace trigger check_some
+before insert on borrowers
+for each row
+begin
+    if :new.borrower_contact is null then :new.borrower_contact := 0;
+    end if;
+end;
+/
+
+
+insert into borrowers values(9876567,'Divija',null);
+insert into borrowers(borrower_id,borrower_name) values(9876567,'Divija');
+
+
+ -- DDL : trigger after updation
+
+--create table my_logs(date_of_log date,message varchar(255));
+
+create or replace trigger record_log
+after update on borrowers
+for each row
+when(old.borrower_id>0)
+begin
+    insert into my_logs values(sysdate,'Updated the borrower table' || :old.borrower_id);
+end;
+/
+
+update borrowers set borrower_contact=98767876 where borrower_id=9876567;
