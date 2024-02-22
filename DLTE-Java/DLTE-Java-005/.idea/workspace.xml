@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8605c85e-5c52-42d6-8082-513672fbd6a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/Beneficiaries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/MySpends.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/call/Executions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/AccountNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/Attempts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/CLI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/Deriving.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/NestedStructure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/NumberOfChances.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/ObjectiveOfThrows.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/handle/logs/chances/Traverse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/handle/logs/AppTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 8
+}]]></component>
+  <component name="ProjectId" id="2chnaA6aaG45hBBuNPHO1DaYaRf" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.Attempts.executor": "Run",
+    "Application.CLI.executor": "Run",
+    "Application.Deriving.executor": "Run",
+    "Application.Executions.executor": "Run",
+    "Application.NestedStructure.executor": "Run",
+    "Application.NumberOfChances.executor": "Run",
+    "Application.ObjectiveOfThrows.executor": "Run",
+    "Application.Traverse.executor": "Run",
+    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.NumberOfChances">
+    <configuration name="Attempts" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="handle.logs.chances.Attempts" />
+      <module name="DLTE-Java-005" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="handle.logs.chances.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CLI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="handle.logs.chances.CLI" />
+      <module name="DLTE-Java-005" />
+      <option name="PROGRAM_PARAMETERS" value="twothousanonly" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="handle.logs.chances.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NestedStructure" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="handle.logs.chances.NestedStructure" />
+      <module name="DLTE-Java-005" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="handle.logs.chances.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NumberOfChances" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="handle.logs.chances.NumberOfChances" />
+      <module name="DLTE-Java-005" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="handle.logs.chances.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Traverse" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="handle.logs.chances.Traverse" />
+      <module name="DLTE-Java-005" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="handle.logs.chances.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Attempts" />
+      <item itemvalue="Application.NestedStructure" />
+      <item itemvalue="Application.NumberOfChances" />
+      <item itemvalue="Application.Traverse" />
+      <item itemvalue="Application.CLI" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.NumberOfChances" />
+        <item itemvalue="Application.Attempts" />
+        <item itemvalue="Application.NestedStructure" />
+        <item itemvalue="Application.Traverse" />
+        <item itemvalue="Application.CLI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8605c85e-5c52-42d6-8082-513672fbd6a8" name="Changes" comment="" />
+      <created>1708572739586</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708572739586</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
