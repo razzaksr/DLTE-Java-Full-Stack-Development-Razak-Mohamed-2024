@@ -1,0 +1,50 @@
+-- DQL
+--select * from bank_user where role = 'manager';
+--select * from bank_user where full_name like '%e%';
+
+--select * from bank_user where full_name like '%e%' and role = 'manager';
+
+--select * from bank_user order by username;
+
+--select * from bank_user order by username desc;
+
+--select * from begin where wallet in ('gpay','phonepay');
+
+--select count(*) from begin where wallet in ('gpay','phonepay');
+
+-- DDL
+--create table mybank(mybank_user varchar(255) not null, mybank_id number not null, mybank_balance float not null);
+--create sequence mybank_seq start with 2401 increment by 1;
+--alter table mybank add constraint mybank_seq primary key(mybank_id);
+
+--insert into mybank values('Shreya M Poojari',mybank_seq.nextval,27314.4);
+
+--select * from mybank;
+
+--create table mybankpe(wallet_user_id number not null,wallet_pin number not null, wallet_user_email varchar(255));
+--alter table mybankpe add wallet_id number not null;
+--alter table mybankpe add primary key(wallet_id);
+
+--alter table mybankpe add FOREIGN key(wallet_user_id) REFERENCES mybank(mybank_id);
+
+--insert into mybankpe values(2403,1111,'sanath@gmail.com',1131);
+--select * from mybankpe;
+
+-- inner, left,right,outer
+select mybank_user,mybank_balance,wallet_id,wallet_user_email from mybank inner join mybankpe on mybank_id=wallet_user_id where mybank_id in (2405,2402,2401);
+
+
+-- subqueries
+--create table mybills(bill_date date,bill_id number not null,bill_amount float not null,bill_by number not null);
+
+--create sequence mybill_seq start with 1001 increment by 1;
+
+--alter table mybills add constraint mybill_seq primary key(bill_id);
+
+--alter table mybills add FOREIGN key(bill_by) references mybankpe(wallet_id);
+
+--insert into mybills values(sysdate,mybill_seq.nextval,100,1111);
+
+--select * from mybills;
+
+--select mybank_user,mybank_balance,wallet_user_email,bill_amount,bill_date from (mybank inner join mybankpe on mybank_id=mybankpe.wallet_user_id) inner join mybills on mybankpe.wallet_id=mybills.bill_by where mybankpe.wallet_id=1111;
