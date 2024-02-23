@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8605c85e-5c52-42d6-8082-513672fbd6a8" name="Changes" comment="" />
+    <list default="true" id="8605c85e-5c52-42d6-8082-513672fbd6a8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/ton/concurrent/features/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/ton/concurrent/features/MyProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/ton/concurrent/features/maintain/ApplyInsurance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/main/java/ton/concurrent/features/maintain/Insurance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DLTE-Java-006/src/test/java/ton/concurrent/features/AppTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,9 +32,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2chnaA6aaG45hBBuNPHO1DaYaRf" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -31,26 +43,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.Attempts.executor": "Run",
-    "Application.CLI.executor": "Run",
-    "Application.Deriving.executor": "Run",
-    "Application.Executions.executor": "Run",
-    "Application.NestedStructure.executor": "Run",
-    "Application.NumberOfChances.executor": "Run",
-    "Application.ObjectiveOfThrows.executor": "Run",
-    "Application.Traverse.executor": "Run",
-    "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Attempts.executor&quot;: &quot;Run&quot;,
+    &quot;Application.CLI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Deriving.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Executions.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NestedStructure.executor&quot;: &quot;Run&quot;,
+    &quot;Application.NumberOfChances.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ObjectiveOfThrows.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Traverse.executor&quot;: &quot;Run&quot;,
+    &quot;Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.NumberOfChances">
+}</component>
+  <component name="RunManager" selected="Application.Attempts">
     <configuration name="Attempts" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="handle.logs.chances.Attempts" />
       <module name="DLTE-Java-005" />
@@ -126,8 +138,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.NumberOfChances" />
         <item itemvalue="Application.Attempts" />
+        <item itemvalue="Application.NumberOfChances" />
         <item itemvalue="Application.NestedStructure" />
         <item itemvalue="Application.Traverse" />
         <item itemvalue="Application.CLI" />
