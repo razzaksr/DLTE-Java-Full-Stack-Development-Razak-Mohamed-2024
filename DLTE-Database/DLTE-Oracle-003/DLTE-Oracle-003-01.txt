@@ -1,0 +1,100 @@
+-- DCL
+
+-- grant, revoke
+
+-- select, connect, insert, delete, create
+
+-- to create user DDL
+-- create user username identified by password;
+
+SQL> create user elroy identified by mite;
+
+Enter user-name: elroy
+Enter password:
+ERROR:
+ORA-01045: user ELROY lacks CREATE SESSION privilege; logon denied
+
+Enter user-name: system
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> grant connect to elroy;
+
+Grant succeeded.
+
+Enter user-name: elroy
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> alter session set current_schema=system;
+
+Session altered.
+
+Enter user-name: system
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+
+SQL> create user varun identified by narendra;
+
+User created.
+
+SQL> grant connect to varun;
+
+Grant succeeded.
+
+SQL> grant select on bankers to varun;
+
+Grant succeeded.
+
+SQL> connect varun/narendra;
+Connected.
+
+SQL> alter session set current_schema=system;
+
+SQL> select * from bankers;
+
+Enter user-name: system
+Enter password:
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> grant select,update on customers to elroy;
+
+Grant succeeded.
+
+SQL> delete from customers where account_number=876787678;
+delete from customers where account_number=876787678
+            *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect system/root;
+Connected.
+SQL> revoke update on customers from elroy;
+
+Revoke succeeded.
+
+SQL> update customers set account_balance=account_balance+10000 where account_number=1011;
+update customers set account_balance=account_balance+10000 where account_number=1011
+       *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+SQL> connect system/root;
+Connected.
+SQL> drop user varun;
+
+User dropped.
+
+SQL> drop user elroy;
+
+User dropped.
