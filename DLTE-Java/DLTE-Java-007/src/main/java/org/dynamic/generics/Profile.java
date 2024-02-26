@@ -1,6 +1,6 @@
 package org.dynamic.generics;
 
-public class Profile {
+public class Profile implements Comparable<Profile>{
     private String username;
     private String password;
     private String address;
@@ -56,5 +56,12 @@ public class Profile {
 
     public void setContact(Long contact) {
         this.contact = contact;
+    }
+
+    @Override
+    public int compareTo(Profile o) {
+//        return 0;
+//        return this.username.compareTo(o.username);
+        return this.contact.compareTo(o.contact);
     }
 }
