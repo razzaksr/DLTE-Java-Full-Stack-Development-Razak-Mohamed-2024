@@ -1,0 +1,8 @@
+Feb 28, 2024 5:42:46 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 28, 2024 5:42:46 PM app.mybank.middleware.CreditCardFileRepository findById
+WARNING: 111111111Credit Card not exists
+Feb 28, 2024 5:44:02 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 28, 2024 5:44:02 PM app.mybank.middleware.CreditCardFileRepository findById
+WARNING: 111111111Credit Card not exists

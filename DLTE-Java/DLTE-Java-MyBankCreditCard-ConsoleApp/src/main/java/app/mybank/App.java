@@ -35,15 +35,15 @@ public class App
 //            creditCard.setCardNumber(scanner.nextLong());
 //            services.callSave(creditCard);
 //        }
-        //System.out.println(services.callFindAll());
-//        try{
-//            System.out.println(services.callFindById(111111111L));
-//        }
-//        catch (CreditCardException creditCardException){
-//            System.out.println(creditCardException);
-//            System.out.println("Enter the card number");
-//            System.out.println(services.callFindById(scanner.nextLong()));
-//        }
+        System.out.println(services.callFindAll());
+        try{
+            System.out.println(services.callFindById(111111111L));
+        }
+        catch (CreditCardException creditCardException){
+            System.out.println(creditCardException);
+            System.out.println("Enter the card number");
+            System.out.println(services.callFindById(scanner.nextLong()));
+        }
 
 //        try{
 //            System.out.println(services.callFindAllByLimit(200000));;
@@ -65,17 +65,17 @@ public class App
 //            services.callUpdate(myCreditCard);
 //            System.out.println(services.callFindAll());
 //        }
-        CreditCard myCreditCard=new CreditCard(765787656L,123,new Date("1/31/2032"),50000,30000,20000,3333,true,"Elroy");
-        try{
-            services.callDelete(myCreditCard);
-            System.out.println(services.callFindAll());
-        }
-        catch (CreditCardException creditCardException){
-            System.out.println(creditCardException);
-            System.out.println("Enter the existing credit card number");
-            myCreditCard=new CreditCard(scanner.nextLong(), 123,new Date("1/31/2032"),50000,30000,20000,3333,false,"Elroy");
-            services.callDelete(myCreditCard);
-            System.out.println(services.callFindAll());
-        }
+//        CreditCard myCreditCard=new CreditCard(765787656L,123,new Date("1/31/2032"),50000,30000,20000,3333,true,"Elroy");
+//        try{
+//            services.callDelete(myCreditCard);
+//            System.out.println(services.callFindAll());
+//        }
+//        catch (CreditCardException creditCardException){
+//            System.out.println(creditCardException);
+//            System.out.println("Enter the existing credit card number");
+//            myCreditCard=new CreditCard(scanner.nextLong(), 123,new Date("1/31/2032"),50000,30000,20000,3333,false,"Elroy");
+//            services.callDelete(myCreditCard);
+//            System.out.println(services.callFindAll());
+//        }
     }
 }

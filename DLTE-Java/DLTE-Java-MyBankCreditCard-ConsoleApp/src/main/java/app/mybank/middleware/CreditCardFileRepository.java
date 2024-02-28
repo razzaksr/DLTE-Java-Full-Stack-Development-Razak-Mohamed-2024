@@ -8,8 +8,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 import java.util.stream.Collectors;
 
 public class CreditCardFileRepository implements CreditCardRepository {
@@ -20,6 +22,13 @@ public class CreditCardFileRepository implements CreditCardRepository {
     private List<CreditCard> creditCardList=new ArrayList<>();
     public CreditCardFileRepository(String url){
         filePath=url;
+        try{
+            FileHandler fileHandler=new FileHandler("credit-card-logs.txt",true);
+            SimpleFormatter simpleFormatter=new SimpleFormatter();
+            fileHandler.setFormatter(simpleFormatter);
+            logger.addHandler(fileHandler);
+        }
+        catch (IOException ioException){}
     }
 
     private void writeIntoFile(){
