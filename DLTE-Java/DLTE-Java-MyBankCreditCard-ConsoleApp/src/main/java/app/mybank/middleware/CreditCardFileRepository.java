@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class CreditCardFileRepository implements CreditCardRepository {
 
@@ -50,7 +51,7 @@ public class CreditCardFileRepository implements CreditCardRepository {
     @Override
     public void save(CreditCard creditCard) {
         readFromFile();
-        CreditCard object=creditCardList.stream().filter(each->each.getCardNumber()== creditCard.getCardNumber()).findFirst().orElse(null);
+        CreditCard object=creditCardList.stream().filter(each->each.getCardNumber().equals(creditCard.getCardNumber())).findFirst().orElse(null);
         if(object!=null) {
             logger.log(Level.WARNING,creditCard.getCardNumber()+resourceBundle.getString("card.exists"));
             throw new CreditCardException();
@@ -71,7 +72,7 @@ public class CreditCardFileRepository implements CreditCardRepository {
     @Override
     public CreditCard findById(Long creditCardNumber) {
         readFromFile();
-        CreditCard object=creditCardList.stream().filter(each->each.getCardNumber()==creditCardNumber).findFirst().orElse(null);
+        CreditCard object=creditCardList.stream().filter(each->each.getCardNumber().equals(creditCardNumber)).findFirst().orElse(null);
         if(object==null) {
             logger.log(Level.WARNING,creditCardNumber+resourceBundle.getString("card.notExists"));
             throw new CreditCardException();
@@ -81,16 +82,40 @@ public class CreditCardFileRepository implements CreditCardRepository {
 
     @Override
     public List<CreditCard> findAllByLimit(Integer limit) {
-        return null;
+        readFromFile();
+        creditCardList=creditCardList.stream().filter(each->each.getCardLimit().compareTo(limit)>0).collect(Collectors.toList());
+        if(creditCardList.size()==0) {
+            logger.log(Level.WARNING, limit.toString() + resourceBundle.getString("card.notExists"));
+            throw new CreditCardException(resourceBundle.getString("card.noMatches"));
+        }
+        return creditCardList;
     }
 
     @Override
     public void update(CreditCard creditCard) {
-
+        readFromFile();
+        CreditCard matched = creditCardList.stream().filter(each->each.getCardNumber().equals(creditCard.getCardNumber())).findFirst().orElse(null);
+        if(matched==null) {
+            logger.log(Level.WARNING,creditCard.getCardNumber()+resourceBundle.getString("card.notExists"));
+            throw new CreditCardException(resourceBundle.getString("card.noMatches"));
+        }
+        int index=creditCardList.indexOf(matched);
+        creditCardList.set(index,creditCard);
+        writeIntoFile();
+        logger.log(Level.FINE,resourceBundle.getString("card.update.ok"));
+        System.out.println(resourceBundle.getString("card.update.ok"));
     }
 
     @Override
     public void delete(CreditCard creditCard) {
-
+        readFromFile();
+        boolean removeStatus=creditCardList.removeIf(each->each.getCardNumber().equals(creditCard.getCardNumber()));
+        if(!removeStatus){
+            logger.log(Level.WARNING,creditCard.getCardNumber()+resourceBundle.getString("card.noMatches"));
+            throw new CreditCardException(resourceBundle.getString("card.noMatches"));
+        }
+        writeIntoFile();
+        logger.log(Level.FINE,resourceBundle.getString("card.delete.ok"));
+        System.out.println(resourceBundle.getString("card.delete.ok"));
     }
 }

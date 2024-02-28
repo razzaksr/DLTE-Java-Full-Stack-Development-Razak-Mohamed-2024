@@ -1,8 +1,9 @@
 package app.mybank.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CreditCard {
+public class CreditCard implements Serializable {
     private Long cardNumber;
     private Integer cardCvv;
     private Date cardExpiry;

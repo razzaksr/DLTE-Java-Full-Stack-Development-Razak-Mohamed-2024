@@ -1,8 +1,9 @@
 package app.mybank.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 // transaction model/entity/business model
-public class Transaction {
+public class Transaction implements Serializable {
     private Integer transactionId;
     private Date transactionDate;
     private Long transactionDoneBy;

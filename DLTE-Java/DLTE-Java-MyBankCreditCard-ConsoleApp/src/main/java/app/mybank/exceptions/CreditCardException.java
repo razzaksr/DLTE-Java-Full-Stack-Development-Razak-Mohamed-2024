@@ -4,6 +4,9 @@ import java.util.ResourceBundle;
 
 public class CreditCardException extends RuntimeException{
     public CreditCardException(){
-        super(ResourceBundle.getBundle("credtcard").getString("card.exception"));
+        super(ResourceBundle.getBundle("creditcard").getString("card.exception"));
+    }
+    public CreditCardException(String additionalInfo){
+        super(ResourceBundle.getBundle("creditcard").getString("card.exception")+" "+additionalInfo);
     }
 }
