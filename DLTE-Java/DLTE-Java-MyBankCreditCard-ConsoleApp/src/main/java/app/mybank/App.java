@@ -4,6 +4,7 @@ import app.mybank.entity.CreditCard;
 import app.mybank.entity.Transaction;
 import app.mybank.exceptions.CreditCardException;
 import app.mybank.exceptions.MyBankJarvisException;
+import app.mybank.exceptions.TransactionException;
 import app.mybank.middleware.FileStorageTarget;
 import app.mybank.remotes.StorageTarget;
 import app.mybank.services.CreditCardServices;
@@ -18,6 +19,7 @@ import java.util.*;
 public class App 
 {
     private static CreditCardServices services=new CreditCardServices();
+    private static TransactionService transactionService=new TransactionService();
     private static ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
     private static Scanner scanner=new Scanner(System.in);
     private static CreditCard creditCard;
@@ -35,17 +37,74 @@ public class App
                 option= scanner.nextInt();
                 switch (option){
                     case 1:
-                        System.out.println("Update");
+                        System.out.println("Enter the details you wish update among (limit,usage,available,pin)");
+                        String userInput= scanner.next();// available,pin
+                        String[] properties=userInput.split(",");
+                        int size= properties.length;
+                        for(int index=0;index<size;index++){
+                            if(properties[index].equalsIgnoreCase("limit")){
+                                System.out.println("Enter the new limit ");
+                                creditCard.setCardLimit(scanner.nextInt());
+                            }
+                            if(properties[index].equalsIgnoreCase("usage")){
+                                System.out.println("enter the current usage");
+                                creditCard.setCardUsage(scanner.nextInt());
+                            }
+                            if(properties[index].equalsIgnoreCase("available")){
+                                System.out.println("enter the available limit ");
+                                creditCard.setCardAvailable(scanner.nextInt());
+                            }
+                            if(properties[index].equalsIgnoreCase("pin")){
+                                System.out.println("Enter the old pin");
+                                if(creditCard.getCardPin().equals(scanner.nextInt())){
+                                    System.out.println("Set new pin");
+                                    creditCard.setCardPin(scanner.nextInt());
+                                }
+                                else{
+                                    System.out.println("PIN can't set");
+                                }
+                            }
+                        }
+                        services.callUpdate(creditCard);
                         break;
                     case 2:
-                        System.out.println("New transaction");
+                        System.out.println("Enter the Transaction details such as merchant name,id,amount");
+                        Transaction transaction=new Transaction();
+                        transaction.setTransactionDoneBy(creditCard.getCardNumber());
+                        transaction.setTransactionDate(new Date());
+                        String nameOfTheMerchant= scanner.next();
+                        transaction.setMerchant(scanner.nextInt());
+                        transaction.setTransactionAmount(scanner.nextDouble());
+                        try{
+                            transactionService.callSave(transaction,nameOfTheMerchant);
+                        }
+                        catch (TransactionException transactionException){
+                            System.out.println(transactionException);
+                        }
                         break;
                     case 3:
-                        System.out.println("View Transaction");break;
+                        System.out.println("View transaction");
+                        System.out.println(transactionService.callFindAllByCreditCard(creditCard.getCardNumber()));
+                        break;
                     case 4:
-                        System.out.println("View card");break;
+                        System.out.println("View card");
+                        try{
+                            System.out.println(services.callFindById(creditCard.getCardNumber()));
+                        }
+                        catch (CreditCardException creditCardException){
+                            System.out.println(creditCardException);
+                        }
+                        break;
                     case 5:
-                        System.out.println("Handover the card");break;
+                        System.out.println("Handover the card");
+                        creditCard.setCardStatus(false);
+                        try{
+                            services.callUpdate(creditCard);
+                        }
+                        catch (CreditCardException creditCardException){
+                            System.out.println(creditCardException);
+                        }
+                        break;
                     default:return;
                 }
             }while (true);
@@ -62,7 +121,6 @@ public class App
                 if(current.getCardPin().equals(pin)){
                     App.creditCard=current;
                     System.out.println(resourceBundle.getString("app.log.ok"));
-                    return;
                 }
                 else{
                     throw new MyBankJarvisException();

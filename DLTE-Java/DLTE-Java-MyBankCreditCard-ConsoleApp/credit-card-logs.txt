@@ -68,3 +68,7 @@ Feb 29, 2024 12:48:16 PM app.mybank.middleware.CreditCardFileRepository findById
 WARNING: 5675467Credit Card not exists
 Feb 29, 2024 12:58:14 PM app.mybank.middleware.CreditCardFileRepository findById
 WARNING: 765787656Credit Card not exists
+Feb 29, 2024 2:38:17 PM app.mybank.middleware.TransactionFileRepository save
+INFO: New Merchant added
+Feb 29, 2024 2:38:17 PM app.mybank.middleware.TransactionFileRepository save
+INFO: Transaction successful
