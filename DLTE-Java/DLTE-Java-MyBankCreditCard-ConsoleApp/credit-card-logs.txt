@@ -72,3 +72,21 @@ Feb 29, 2024 2:38:17 PM app.mybank.middleware.TransactionFileRepository save
 INFO: New Merchant added
 Feb 29, 2024 2:38:17 PM app.mybank.middleware.TransactionFileRepository save
 INFO: Transaction successful
+Feb 29, 2024 5:35:39 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 29, 2024 5:36:47 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 29, 2024 5:37:10 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 29, 2024 5:38:11 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 29, 2024 5:38:46 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 29, 2024 5:39:00 PM app.mybank.middleware.CreditCardFileRepository findAll
+INFO: All credit card information fetched
+Feb 29, 2024 5:44:29 PM app.mybank.middleware.CreditCardFileRepository save
+WARNING: 2233445566Credit Card already exists
+Feb 29, 2024 5:45:48 PM app.mybank.middleware.CreditCardFileRepository save
+INFO: 1133445566Credit card approved by MyBank
+Feb 29, 2024 5:46:09 PM app.mybank.middleware.CreditCardFileRepository save
+INFO: 1133445566Credit card approved by MyBank
