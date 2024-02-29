@@ -8,7 +8,8 @@ public class Transaction implements Serializable {
     private Date transactionDate;
     private Long transactionDoneBy;
     private Double transactionAmount;
-    private String transactionReceiver;
+
+    private Integer merchant;
 
     @Override
     public String toString() {
@@ -17,26 +18,27 @@ public class Transaction implements Serializable {
                 ", transactionDate=" + transactionDate +
                 ", transactionDoneBy=" + transactionDoneBy +
                 ", transactionAmount=" + transactionAmount +
-                ", transactionReceiver='" + transactionReceiver + '\'' +
+                ", merchant=" + merchant +
                 '}';
     }
 
-    public Transaction(Date transactionDate, Long transactionDoneBy, Double transactionAmount, String transactionReceiver) {
-        this.transactionDate = transactionDate;
-        this.transactionDoneBy = transactionDoneBy;
-        this.transactionAmount = transactionAmount;
-        this.transactionReceiver = transactionReceiver;
+    public Integer getMerchant() {
+        return merchant;
+    }
+
+    public void setMerchant(Integer merchant) {
+        this.merchant = merchant;
     }
 
     public Transaction() {
     }
 
-    public Transaction(Integer transactionId, Date transactionDate, Long transactionDoneBy, Double transactionAmount, String transactionReceiver) {
+    public Transaction(Integer transactionId, Date transactionDate, Long transactionDoneBy, Double transactionAmount, Integer merchant) {
         this.transactionId = transactionId;
         this.transactionDate = transactionDate;
         this.transactionDoneBy = transactionDoneBy;
         this.transactionAmount = transactionAmount;
-        this.transactionReceiver = transactionReceiver;
+        this.merchant = merchant;
     }
 
     public Integer getTransactionId() {
@@ -71,11 +73,4 @@ public class Transaction implements Serializable {
         this.transactionAmount = transactionAmount;
     }
 
-    public String getTransactionReceiver() {
-        return transactionReceiver;
-    }
-
-    public void setTransactionReceiver(String transactionReceiver) {
-        this.transactionReceiver = transactionReceiver;
-    }
 }

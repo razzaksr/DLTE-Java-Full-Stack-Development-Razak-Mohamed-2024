@@ -29,8 +29,8 @@ public class TransactionComparator implements Comparator<Transaction> {
             case "amount": case "Amount":
                 order=o1.getTransactionAmount().compareTo(o2.getTransactionAmount());
                 break;
-            case "receiver": case "Receiver":
-                order=o1.getTransactionReceiver().compareTo(o2.getTransactionReceiver());
+            case "merchant": case "Merchant":
+                order=o1.getMerchant().compareTo(o2.getMerchant());
                 break;
         }
         return orderBy.equals("ascending")?order:-order;

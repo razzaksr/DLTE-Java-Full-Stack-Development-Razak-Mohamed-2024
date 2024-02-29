@@ -1,12 +1,16 @@
 package app.mybank;
 
 import app.mybank.entity.CreditCard;
+import app.mybank.entity.Transaction;
 import app.mybank.exceptions.CreditCardException;
 import app.mybank.middleware.FileStorageTarget;
 import app.mybank.remotes.StorageTarget;
 import app.mybank.services.CreditCardServices;
+import app.mybank.services.TransactionService;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -35,15 +39,15 @@ public class App
 //            creditCard.setCardNumber(scanner.nextLong());
 //            services.callSave(creditCard);
 //        }
-        System.out.println(services.callFindAll());
-        try{
-            System.out.println(services.callFindById(111111111L));
-        }
-        catch (CreditCardException creditCardException){
-            System.out.println(creditCardException);
-            System.out.println("Enter the card number");
-            System.out.println(services.callFindById(scanner.nextLong()));
-        }
+//        System.out.println(services.callFindAll());
+//        try{
+//            System.out.println(services.callFindById(111111111L));
+//        }
+//        catch (CreditCardException creditCardException){
+//            System.out.println(creditCardException);
+//            System.out.println("Enter the card number");
+//            System.out.println(services.callFindById(scanner.nextLong()));
+//        }
 
 //        try{
 //            System.out.println(services.callFindAllByLimit(200000));;
@@ -53,7 +57,7 @@ public class App
 //            System.out.println("Enter the another limit to filter");
 //            System.out.println(services.callFindAllByLimit(scanner.nextInt()));
 //        }
-//        CreditCard myCreditCard=new CreditCard(765787656L,123,new Date("1/31/2032"),50000,30000,20000,3333,true,"Elroy");
+//        CreditCard myCreditCard=new CreditCard(7654676766L,123,new Date("1/31/2032"),50000,40000,10000,3333,true,"Razak Mohamed S");
 //        try{
 //            services.callUpdate(myCreditCard);
 //            System.out.println(services.callFindAll());
@@ -77,5 +81,16 @@ public class App
 //            services.callDelete(myCreditCard);
 //            System.out.println(services.callFindAll());
 //        }
+        TransactionService transactionService=new TransactionService();
+
+//        Transaction transaction=new Transaction();
+//        transaction.setMerchant(11223344);
+//        transaction.setTransactionAmount(15000.0);
+//        transaction.setTransactionDate(new Date("2/11/2024"));
+//        transaction.setTransactionDoneBy(7654676766L);
+//
+//        transactionService.callSave(transaction,"Saravana bhavan");
+
+        System.out.println(transactionService.callFindAll());
     }
 }
