@@ -15,6 +15,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
+import java.util.stream.Collectors;
 
 public class TransactionFileRepository implements TransactionRepository {
 
@@ -97,7 +98,7 @@ public class TransactionFileRepository implements TransactionRepository {
         int lastIndex=transactionList.size()-1;
         CreditCard creditCard=creditCardFileRepository.findById(transaction.getTransactionDoneBy());
         try{
-            if(creditCard.getCardAvailable()>=transaction.getTransactionAmount()){
+            if(creditCard.getCardAvailable()>=transaction.getTransactionAmount()&&creditCard.isCardStatus()){
                 int existingId=transactionList.get(lastIndex).getTransactionId();
                 transaction.setTransactionId(existingId+1);
 
@@ -165,7 +166,11 @@ public class TransactionFileRepository implements TransactionRepository {
 
     @Override
     public List<Transaction> findAllByCreditCard(Long cardNumber) {
-        return null;
+        readFromTransactionFile();
+        List<Transaction> current = transactionList.stream().filter(each->each.getTransactionDoneBy().equals(cardNumber)).collect(Collectors.toList());
+        if(current.size()==0)
+            System.out.println(resourceBundle.getString("transaction.empty"));
+        return current;
     }
 
     @Override

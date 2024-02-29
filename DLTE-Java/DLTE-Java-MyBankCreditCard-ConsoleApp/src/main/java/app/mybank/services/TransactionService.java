@@ -25,4 +25,8 @@ public class TransactionService {
     public List<Transaction> callFindAll(){
         return transactionRepository.findAll();
     }
+
+    public List<Transaction> callFindAllByCreditCard(Long cardNumber){
+        return transactionRepository.findAllByCreditCard(cardNumber);
+    }
 }

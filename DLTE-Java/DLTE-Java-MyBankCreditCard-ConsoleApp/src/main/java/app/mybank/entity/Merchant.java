@@ -14,7 +14,7 @@ public class Merchant implements Serializable {
         return "Merchant{" +
                 "merchantId=" + merchantId +
                 ", merchantName='" + merchantName + '\'' +
-                '}';
+                '}'+"\n";
     }
 
     public Merchant(Integer merchantId, String merchantName) {

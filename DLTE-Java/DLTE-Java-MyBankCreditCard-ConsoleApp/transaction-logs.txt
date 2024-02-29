@@ -26,3 +26,9 @@ Feb 29, 2024 10:34:30 AM app.mybank.middleware.TransactionFileRepository save
 INFO: New Merchant added
 Feb 29, 2024 10:34:30 AM app.mybank.middleware.TransactionFileRepository save
 INFO: Transaction successful
+Feb 29, 2024 10:58:49 AM app.mybank.middleware.TransactionFileRepository save
+INFO: Transaction successful
+Feb 29, 2024 11:52:06 AM app.mybank.middleware.TransactionFileRepository save
+INFO: Transaction successful
+Feb 29, 2024 11:55:58 AM app.mybank.middleware.TransactionFileRepository save
+INFO: Transaction successful

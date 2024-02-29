@@ -15,12 +15,12 @@ import java.util.stream.Stream;
 // set(pos,obj)
 public class IllustrationOfList {
     public static void main(String[] args) {
-//        ArrayList arrayList=new ArrayList();// generics
-        ArrayList arrayList=new ArrayList(1);// generics
+//        ArrayList arrayList=new ArrayList();// non generics
+        ArrayList arrayList=new ArrayList(1);// non generics
         arrayList.add(12);arrayList.add("Razak Mohamed s");
         System.out.println(arrayList);
 
-        ArrayList<String> stringArrayList=new ArrayList<>();
+        ArrayList<String> stringArrayList=new ArrayList<>();// generic
         //stringArrayList.add(12);
 
         String deposits1="Fixed";String deposits2="RD";

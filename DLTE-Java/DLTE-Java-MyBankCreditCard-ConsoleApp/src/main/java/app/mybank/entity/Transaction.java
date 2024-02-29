@@ -19,7 +19,7 @@ public class Transaction implements Serializable {
                 ", transactionDoneBy=" + transactionDoneBy +
                 ", transactionAmount=" + transactionAmount +
                 ", merchant=" + merchant +
-                '}';
+                '}'+"\n";
     }
 
     public Integer getMerchant() {
