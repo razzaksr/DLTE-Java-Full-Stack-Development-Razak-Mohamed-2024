@@ -1,0 +1,16 @@
+Mar 01, 2024 2:51:09 PM app.mybank.middleware.CreditCardDatabaseRepository save
+INFO: Credit card has approved by MyBANK
+Mar 01, 2024 2:54:39 PM app.mybank.middleware.CreditCardDatabaseRepository save
+INFO: Credit card has approved by MyBANK
+Mar 01, 2024 2:55:55 PM app.mybank.middleware.CreditCardDatabaseRepository save
+INFO: Credit card has approved by MyBANK
+Mar 01, 2024 3:11:54 PM app.mybank.middleware.CreditCardDatabaseRepository findById
+INFO: Credit card number not available
+Mar 01, 2024 3:24:42 PM app.mybank.middleware.CreditCardDatabaseRepository update
+INFO: Credit card has updated
+Mar 01, 2024 3:29:45 PM app.mybank.middleware.CreditCardDatabaseRepository delete
+INFO: Credit card has deleted successfully
+Mar 01, 2024 5:03:11 PM app.mybank.middleware.CreditCardDatabaseRepository save
+INFO: Credit card request has rejected by MyBANK
+Mar 01, 2024 5:03:11 PM app.mybank.middleware.CreditCardDatabaseRepository findById
+INFO: Credit card number not available

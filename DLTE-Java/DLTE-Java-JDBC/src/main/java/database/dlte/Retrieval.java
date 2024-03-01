@@ -96,12 +96,32 @@ public class Retrieval {
         }
     }
 
+    public static void delete(String userName){
+        try{
+            String query="delete from mybank_users where username=?";
+            preparedStatement=connection.prepareStatement(query);
+            preparedStatement.setString(1,userName);
+            int result = preparedStatement.executeUpdate();
+            if(result!=0){
+                System.out.println(userName+" has deleted");
+            }
+            else{
+                System.out.println(userName+" not available");
+            }
+        }
+        catch (SQLException sqlException){
+            System.out.println(sqlException);
+        }
+    }
+
     public static void main(String[] args) {
 //        System.out.println(Retrieval.fetchRecords());
         Scanner scanner=new Scanner(System.in);
 //        System.out.println("Enter the min and max balance to fetch");
 //        System.out.println(Retrieval.fetchRecordsByBalance(scanner.nextDouble(), scanner.nextDouble()));
-        MyBankUsers myBankUsers=new MyBankUsers("sanathkumar","sanath@123","sanathkumar@gmail.com",87656787656L,100000.0);
-        update(myBankUsers);
+//        MyBankUsers myBankUsers=new MyBankUsers("sanathkumar","sanath@123","sanathkumar@gmail.com",87656787656L,100000.0);
+//        update(myBankUsers);
+        System.out.println("Tell us username wish to delete ");
+        delete(scanner.next());
     }
 }

@@ -5,6 +5,8 @@ import app.mybank.entity.Transaction;
 import app.mybank.exceptions.CreditCardException;
 import app.mybank.exceptions.MyBankJarvisException;
 import app.mybank.exceptions.TransactionException;
+import app.mybank.middleware.CreditCardDatabaseRepository;
+import app.mybank.middleware.DatabaseTarget;
 import app.mybank.middleware.FileStorageTarget;
 import app.mybank.remotes.StorageTarget;
 import app.mybank.services.CreditCardServices;
@@ -18,13 +20,17 @@ import java.util.*;
  */
 public class App 
 {
-    private static CreditCardServices services=new CreditCardServices();
+    private static StorageTarget storageTarget;
+    private static CreditCardServices services;
     private static TransactionService transactionService=new TransactionService();
     private static ResourceBundle resourceBundle=ResourceBundle.getBundle("application");
     private static Scanner scanner=new Scanner(System.in);
     private static CreditCard creditCard;
     public static void main( String[] args )
     {
+//        storageTarget=new FileStorageTarget();
+        storageTarget=new DatabaseTarget();
+        services=new CreditCardServices(storageTarget);
         System.out.println(resourceBundle.getString("app.greet"));
         loggingIn();
         if(creditCard==null) {

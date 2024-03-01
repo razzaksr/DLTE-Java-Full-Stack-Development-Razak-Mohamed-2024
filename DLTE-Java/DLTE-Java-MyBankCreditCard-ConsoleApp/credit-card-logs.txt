@@ -90,3 +90,5 @@ Feb 29, 2024 5:45:48 PM app.mybank.middleware.CreditCardFileRepository save
 INFO: 1133445566Credit card approved by MyBank
 Feb 29, 2024 5:46:09 PM app.mybank.middleware.CreditCardFileRepository save
 INFO: 1133445566Credit card approved by MyBank
+Mar 01, 2024 4:12:16 PM app.mybank.middleware.CreditCardDatabaseRepository findById
+INFO: Credit card number not available
