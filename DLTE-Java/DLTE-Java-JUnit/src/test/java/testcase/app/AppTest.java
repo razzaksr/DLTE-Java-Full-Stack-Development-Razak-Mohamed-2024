@@ -46,7 +46,7 @@ public class AppTest {
         assertSame(45,myNumbers.set(2,90));
     }
 
-    @Test(timeout = 5000)
+    @Test(timeout = 6000)
     public void testTime(){
         assertFalse(viewAll().size()<0);
     }

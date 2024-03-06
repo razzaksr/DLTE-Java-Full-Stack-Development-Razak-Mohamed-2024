@@ -24,6 +24,24 @@ public class Retrieval {
             System.out.println(sqlException);
         }
     }
+
+    public static void callProcedure(){
+        String query="{call read_bankers_info(?,?,?)}";
+        String info="";
+        String banker="";
+        try {
+            CallableStatement callableStatement=connection.prepareCall(query);
+            callableStatement.setInt(1,139001);
+            callableStatement.registerOutParameter(2,Types.VARCHAR);
+            callableStatement.registerOutParameter(3,Types.VARCHAR);
+            callableStatement.execute();
+            System.out.println(callableStatement.getString(2));
+            System.out.println(callableStatement.getString(3));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static List<MyBankUsers> fetchRecords(){
 
         List<MyBankUsers> myBankUsersList=new ArrayList<>();
@@ -38,7 +56,7 @@ public class Retrieval {
                 myBankUsers.setUsername(records.getString("username"));
                 myBankUsers.setPassword(records.getString(2));
                 myBankUsers.setEmail(records.getString("email"));
-                myBankUsers.setContact(records.getLong("contact"));
+                myBankUsers.setContact(records.getLong("username"));
                 myBankUsers.setBalance(records.getDouble(5));
                 myBankUsersList.add(myBankUsers);
             }
@@ -116,12 +134,13 @@ public class Retrieval {
 
     public static void main(String[] args) {
 //        System.out.println(Retrieval.fetchRecords());
+        callProcedure();
         Scanner scanner=new Scanner(System.in);
 //        System.out.println("Enter the min and max balance to fetch");
 //        System.out.println(Retrieval.fetchRecordsByBalance(scanner.nextDouble(), scanner.nextDouble()));
 //        MyBankUsers myBankUsers=new MyBankUsers("sanathkumar","sanath@123","sanathkumar@gmail.com",87656787656L,100000.0);
 //        update(myBankUsers);
-        System.out.println("Tell us username wish to delete ");
-        delete(scanner.next());
+//        System.out.println("Tell us username wish to delete ");
+//        delete(scanner.next());
     }
 }
