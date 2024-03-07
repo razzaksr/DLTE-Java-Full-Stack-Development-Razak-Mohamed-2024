@@ -1,0 +1,24 @@
+<configuration>
+
+    <!-- Define appenders -->
+    <appender name="myConsole" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%highlight([%thread]) %highlight(%-5level) %logger{36} - %highlight(%msg) %d{dd/MM/YYYY HH:mm:ss} %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Define file appender -->
+    <appender name="myLogs" class="ch.qos.logback.core.FileAppender">
+        <file>D:/Course backups/Java/DLithe2024Feb-Corporate-TietoEvry/log/app.log</file> <!-- Define log file name and path -->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %highlight([%thread]) %-5level %logger{36} - %highlight(%msg) %n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root logger settings -->
+    <root level="INFO">
+        <appender-ref ref="myConsole" />
+        <appender-ref ref="myLogs" /> <!-- Attach file appender -->
+    </root>
+
+</configuration>

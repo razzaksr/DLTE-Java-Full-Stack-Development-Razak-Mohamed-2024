@@ -28,8 +28,8 @@ public class App
     private static CreditCard creditCard;
     public static void main( String[] args )
     {
-//        storageTarget=new FileStorageTarget();
-        storageTarget=new DatabaseTarget();
+        storageTarget=new FileStorageTarget();
+//        storageTarget=new DatabaseTarget();
         services=new CreditCardServices(storageTarget);
         System.out.println(resourceBundle.getString("app.greet"));
         loggingIn();
