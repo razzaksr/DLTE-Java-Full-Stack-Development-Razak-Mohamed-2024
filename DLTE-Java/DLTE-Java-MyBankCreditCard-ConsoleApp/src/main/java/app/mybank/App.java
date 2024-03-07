@@ -29,6 +29,8 @@ public class App
     public static void main( String[] args )
     {
         storageTarget=new FileStorageTarget();
+        // when logback.xml in somewhere else
+        System.setProperty("logbackConfiguration","D:\\Course backups\\Java\\DLithe2024Feb-Corporate-TietoEvry\\DLTE-Java Full Stack Development - Razak Mohamed\\logback.xml");
 //        storageTarget=new DatabaseTarget();
         services=new CreditCardServices(storageTarget);
         System.out.println(resourceBundle.getString("app.greet"));
