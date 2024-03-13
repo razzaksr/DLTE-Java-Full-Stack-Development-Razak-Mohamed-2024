@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<policies>
+    <policy title="LIC Jeevan Ananad">
+        <duration>10</duration>
+        <monthly>2000</monthly>
+        <total-value>400000</total-value>
+    </policy>
+    <policy title="MyBank Accidental">
+        <duration>1</duration>
+        <monthly>10000</monthly>
+        <total-value>500000</total-value>
+    </policy>
+    <policy title="LIC Jeevan Jyothi">
+        <duration>20</duration>
+        <monthly>3000</monthly>
+        <total-value>1000000</total-value>
+    </policy>
+    <policy title="LIC Jeevan Umaang">
+        <duration>20</duration>
+        <monthly>12000</monthly>
+        <total-value>8000000</total-value>
+    </policy>
+</policies>

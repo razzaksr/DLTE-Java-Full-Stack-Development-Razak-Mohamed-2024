@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<insurance policyName="MyBank Hexa">
+    <policyPeriod>5</policyPeriod>
+    <premiumAmount>9800</premiumAmount>
+    <totalCoverage>500000</totalCoverage>
+</insurance>

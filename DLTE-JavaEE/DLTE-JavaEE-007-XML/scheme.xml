@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<insurance policyName="Max Life">
+    <policyPeriod>3</policyPeriod>
+    <premiumAmount>1200</premiumAmount>
+    <totalCoverage>200000</totalCoverage>
+</insurance>
