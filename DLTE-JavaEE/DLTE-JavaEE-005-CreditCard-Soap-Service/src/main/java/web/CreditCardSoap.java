@@ -22,6 +22,25 @@ public class CreditCardSoap {
     }
 
     @WebMethod
+    public void blockCard(@WebParam(name = "CreditCard") CreditCard creditCard){
+        services.callDelete(creditCard);
+    }
+
+    @WebMethod
+    public void createCard(@WebParam(name="CreditCard") CreditCard creditCard){
+        services.callSave(creditCard);
+    }
+
+    @WebMethod
+    @WebResult(name="GroupOfCards")
+    public GroupOfCards readAllByLimit(@WebParam(name="Integer") Integer limit){
+        GroupOfCards groupOfCards=new GroupOfCards();
+        List<CreditCard> myList = services.callFindAllByLimit(limit);
+        groupOfCards.setCreditCards(myList);
+        return groupOfCards;
+    }
+
+    @WebMethod
     @WebResult(name="CreditCard")
     public CreditCard readOne(@WebParam(name="Long") Long cardNumber){
         return services.callFindById(cardNumber);

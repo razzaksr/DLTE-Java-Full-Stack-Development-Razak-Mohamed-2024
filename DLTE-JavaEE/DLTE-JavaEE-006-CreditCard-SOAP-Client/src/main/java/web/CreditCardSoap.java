@@ -26,6 +26,49 @@ public interface CreditCardSoap {
 
     /**
      * 
+     * @return
+     *     returns web.GroupOfCards
+     */
+    @WebMethod
+    @WebResult(name = "GroupOfCards", partName = "GroupOfCards")
+    @Action(input = "http://web/CreditCardSoap/readAllRequest", output = "http://web/CreditCardSoap/readAllResponse")
+    public GroupOfCards readAll();
+
+    /**
+     * 
+     * @param integer
+     * @return
+     *     returns web.GroupOfCards
+     */
+    @WebMethod
+    @WebResult(name = "GroupOfCards", partName = "GroupOfCards")
+    @Action(input = "http://web/CreditCardSoap/readAllByLimitRequest", output = "http://web/CreditCardSoap/readAllByLimitResponse")
+    public GroupOfCards readAllByLimit(
+        @WebParam(name = "Integer", partName = "Integer")
+        int integer);
+
+    /**
+     * 
+     * @param creditCard
+     */
+    @WebMethod
+    @Action(input = "http://web/CreditCardSoap/createCardRequest", output = "http://web/CreditCardSoap/createCardResponse")
+    public void createCard(
+        @WebParam(name = "CreditCard", partName = "CreditCard")
+        CreditCard creditCard);
+
+    /**
+     * 
+     * @param creditCard
+     */
+    @WebMethod
+    @Action(input = "http://web/CreditCardSoap/blockCardRequest", output = "http://web/CreditCardSoap/blockCardResponse")
+    public void blockCard(
+        @WebParam(name = "CreditCard", partName = "CreditCard")
+        CreditCard creditCard);
+
+    /**
+     * 
      * @param _long
      * @return
      *     returns web.CreditCard
@@ -36,15 +79,5 @@ public interface CreditCardSoap {
     public CreditCard readOne(
         @WebParam(name = "Long", partName = "Long")
         long _long);
-
-    /**
-     * 
-     * @return
-     *     returns web.GroupOfCards
-     */
-    @WebMethod
-    @WebResult(name = "GroupOfCards", partName = "GroupOfCards")
-    @Action(input = "http://web/CreditCardSoap/readAllRequest", output = "http://web/CreditCardSoap/readAllResponse")
-    public GroupOfCards readAll();
 
 }
