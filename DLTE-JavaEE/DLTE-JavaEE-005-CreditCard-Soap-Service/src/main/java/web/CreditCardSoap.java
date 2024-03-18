@@ -15,7 +15,7 @@ import java.util.List;
 @WebService
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public class CreditCardSoap {
-    private CreditCardServices services;
+    public CreditCardServices services;
     public CreditCardSoap(){
         StorageTarget storageTarget=new DatabaseTarget();
         services=new CreditCardServices(storageTarget);
