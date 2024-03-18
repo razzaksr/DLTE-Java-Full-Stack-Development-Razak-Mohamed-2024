@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
 @WebServlet("/rest/id/*")
 public class ReadByIdService extends HttpServlet {
 
-    private CreditCardServices creditCardServices;
+    public CreditCardServices creditCardServices;
     private ResourceBundle resourceBundle;
     private Logger logger;
 
@@ -33,12 +33,12 @@ public class ReadByIdService extends HttpServlet {
         logger= LoggerFactory.getLogger(ReadByIdService.class);
     }
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id=req.getParameter("number");
         resp.setContentType("application/json");
         try{
             Long creditCardNumber=Long.parseLong(id);
-            logger.info(resourceBundle.getString("id.number"));
+//            logger.info(resourceBundle.getString("id.number"));
             CreditCard creditCard = creditCardServices.callFindById(creditCardNumber);
             Gson gson=new Gson();
             String responseData = gson.toJson(creditCard);
@@ -48,11 +48,11 @@ public class ReadByIdService extends HttpServlet {
         }
         catch (NumberFormatException numberFormatException){
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            resp.getWriter().println(resourceBundle.getString("number.format"));
+            //resp.getWriter().println(resourceBundle.getString("number.format"));
         }
         catch (CreditCardException | MissingResourceException creditCardException){
             resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            resp.getWriter().println(resourceBundle.getString("card.not.found"));
+            //resp.getWriter().println(resourceBundle.getString("card.not.found"));
         }
     }
 }

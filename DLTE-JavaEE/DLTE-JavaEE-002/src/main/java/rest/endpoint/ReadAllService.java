@@ -16,7 +16,7 @@ import java.util.List;
 
 @WebServlet("/rest/all")
 public class ReadAllService extends HttpServlet {
-    CreditCardServices creditCardServices;
+    public CreditCardServices creditCardServices;
 
     @Override
     public void init() throws ServletException {
@@ -25,7 +25,7 @@ public class ReadAllService extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         List<CreditCard> creditCards=creditCardServices.callFindAll();
         Gson gson=new Gson();
