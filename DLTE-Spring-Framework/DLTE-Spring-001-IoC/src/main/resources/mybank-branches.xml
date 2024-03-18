@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="branch2" class="di.ioc.Branch">
+        <property name="branchId" value="11610"/>
+    </bean>
+
+    <bean id="branch3" class="di.ioc.Branch">
+        <property name="bankName" value="MyBank"/>
+        <property name="branchContact" value="8765678765676"/>
+        <property name="branchId" value="122"/>
+        <property name="branchName" value="HSR Layout"/>
+        <property name="ifsCode" value="ABD23434"/>
+    </bean>
+
+    <bean id="branch5" class="di.ioc.Branch">
+        <constructor-arg index="4" value="1234532343"/>
+        <constructor-arg index="2" value="124"/>
+        <constructor-arg index="3" value="MyBank"/>
+        <constructor-arg index="0" value="Bhanshankari"/>
+        <constructor-arg index="1" value="ABD234455"/>
+    </bean>
+</beans>
