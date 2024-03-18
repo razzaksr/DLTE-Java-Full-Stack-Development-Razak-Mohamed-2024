@@ -21,8 +21,8 @@ import java.util.ResourceBundle;
 @WebServlet("/rest/")
 public class ModifyService extends HttpServlet {
     public CreditCardServices cardServices;
-    private ResourceBundle resourceBundle;
-    private Logger logger;
+    public ResourceBundle resourceBundle;
+    public Logger logger;
     @Override
     public void init() throws ServletException {
         StorageTarget storageTarget=new DatabaseTarget();
