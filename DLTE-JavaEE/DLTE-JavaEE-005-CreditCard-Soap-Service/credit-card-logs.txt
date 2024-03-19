@@ -2,3 +2,7 @@ Mar 13, 2024 3:11:33 PM app.mybank.middleware.CreditCardDatabaseRepository save
 INFO: Credit card has approved by MyBANK
 Mar 13, 2024 3:19:59 PM app.mybank.middleware.CreditCardDatabaseRepository delete
 INFO: Credit card has deleted successfully
+Mar 19, 2024 9:29:46 AM app.mybank.middleware.CreditCardDatabaseRepository findById
+INFO: Credit card number not available
+Mar 19, 2024 9:30:47 AM app.mybank.middleware.CreditCardDatabaseRepository save
+INFO: Credit card has approved by MyBANK
