@@ -1,12 +1,16 @@
 package elements.spring.explore.model;
 
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name="card_credit")
-public class CreditCard {
-    @Id
+public class CreditCard implements Serializable {
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "akash")
+    @SequenceGenerator(name = "akash",sequenceName = "elroy",initialValue = 1000019650,allocationSize = 1)
     @Column(name="credit_number")
     private Long cardNumber;
     @Column(name="cvv")
