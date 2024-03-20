@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>elements.spring.explore</groupId>
-    <artifactId>DLTE-Spring-004-Controller</artifactId>
+    <artifactId>DLTE-SpringBoot-004-Controller</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>DLTE-Spring-004-Controller</name>
-    <description>DLTE-Spring-004-Controller</description>
+    <name>DLTE-SpringBoot-004-Controller</name>
+    <description>DLTE-SpringBoot-004-Controller</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
