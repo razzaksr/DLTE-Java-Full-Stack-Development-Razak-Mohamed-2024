@@ -1117,4 +1117,18 @@ Caused by: org.springframework.data.jdbc.repository.config.DialectResolver$NoDia
 [0;39m[31m2024-03-22 12:59:56,570[0;39m [32m[INFO][0;39m elements.spring.explore.DlteSpring006JdbcApplicationTests main [32mStarted DlteSpring006JdbcApplicationTests in 3.43 seconds (JVM running for 4.506)
 [0;39m[31m2024-03-22 12:59:57,708[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown initiated...
 [0;39m[31m2024-03-22 12:59:57,717[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown completed.
+[0;39m[31m2024-03-22 13:07:19,537[0;39m [32m[INFO][0;39m elements.spring.explore.EndpointTesting main [32mStarting EndpointTesting using Java 1.8.0_202 on SRDB with PID 4220 (started by SRDB in D:\Course backups\Java\DLithe2024Feb-Corporate-TietoEvry\DLTE-Java Full Stack Development - Razak Mohamed\DLTE-Spring-Framework\DLTE-Spring-006-JDBC)
+[0;39m[31m2024-03-22 13:07:19,539[0;39m [32m[INFO][0;39m elements.spring.explore.EndpointTesting main [32mNo active profile set, falling back to 1 default profile: "default"
+[0;39m[31m2024-03-22 13:07:20,439[0;39m [32m[INFO][0;39m org.springframework.data.repository.config.RepositoryConfigurationDelegate main [32mBootstrapping Spring Data JDBC repositories in DEFAULT mode.
+[0;39m[31m2024-03-22 13:07:20,459[0;39m [32m[INFO][0;39m org.springframework.data.repository.config.RepositoryConfigurationDelegate main [32mFinished Spring Data repository scanning in 12 ms. Found 0 JDBC repository interfaces.
+[0;39m[31m2024-03-22 13:07:22,603[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Starting...
+[0;39m[31m2024-03-22 13:07:22,609[0;39m [32m[WARN][0;39m com.zaxxer.hikari.util.DriverDataSource main [32mRegistered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[0;39m[31m2024-03-22 13:07:23,026[0;39m [32m[INFO][0;39m com.zaxxer.hikari.pool.PoolBase main [32mHikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+[0;39m[31m2024-03-22 13:07:23,030[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Start completed.
+[0;39m[31m2024-03-22 13:07:23,461[0;39m [32m[INFO][0;39m org.springframework.boot.test.mock.web.SpringBootMockServletContext main [32mInitializing Spring TestDispatcherServlet ''
+[0;39m[31m2024-03-22 13:07:23,462[0;39m [32m[INFO][0;39m org.springframework.test.web.servlet.TestDispatcherServlet main [32mInitializing Servlet ''
+[0;39m[31m2024-03-22 13:07:23,465[0;39m [32m[INFO][0;39m org.springframework.test.web.servlet.TestDispatcherServlet main [32mCompleted initialization in 3 ms
+[0;39m[31m2024-03-22 13:07:23,635[0;39m [32m[INFO][0;39m elements.spring.explore.EndpointTesting main [32mStarted EndpointTesting in 4.62 seconds (JVM running for 6.047)
+[0;39m[31m2024-03-22 13:07:24,002[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown initiated...
+[0;39m[31m2024-03-22 13:07:24,017[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown completed.
 [0;39m
