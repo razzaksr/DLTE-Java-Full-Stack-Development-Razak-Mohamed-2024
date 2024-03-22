@@ -1,0 +1,39 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://loans.services"
+            xmlns:tns="http://loans.services"
+            elementFormDefault="qualified">
+
+
+    <!--    Entity-->
+    <xsd:complexType name="loans">
+        <xsd:sequence>
+            <xsd:element name="loanId" type="xsd:long"/>
+            <xsd:element name="loanPrinciple" type="xsd:double"/>
+            <xsd:element name="loanBorrower" type="xsd:string"/>
+            <xsd:element name="loanTenure" type="xsd:int"/>
+            <xsd:element name="loanInterest" type="xsd:double"/>
+            <xsd:element name="loanPayable" type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--    Status-->
+    <xsd:complexType name="serviceStatus">
+        <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="message" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--    Operation-->
+    <xsd:element name="viewAllLoansRequest">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="viewAllLoansResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="loans" type="tns:loans" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>
