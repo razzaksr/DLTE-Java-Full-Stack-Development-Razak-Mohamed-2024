@@ -12,6 +12,21 @@ public class CreditCard {
     public CreditCard() {
     }
 
+    @Override
+    public String toString() {
+        return "CreditCard{" +
+                "creditcardNumber=" + creditcardNumber +
+                ", creditcardCvv=" + creditcardCvv +
+                ", creditcardExpiry=" + creditcardExpiry +
+                ", creditcardPin=" + creditcardPin +
+                ", creditcardLimit=" + creditcardLimit +
+                ", creditcardUsage=" + creditcardUsage +
+                ", creditcardAvailable=" + creditcardAvailable +
+                ", creditcardStatus=" + creditcardStatus +
+                ", creditcardHolder='" + creditcardHolder + '\'' +
+                '}';
+    }
+
     public CreditCard(Long creditcardNumber, Integer creditcardCvv, Date creditcardExpiry, Integer creditcardPin, Integer creditcardLimit, Integer creditcardUsage, Integer creditcardAvailable, boolean creditcardStatus, String creditcardHolder) {
         this.creditcardNumber = creditcardNumber;
         this.creditcardCvv = creditcardCvv;
