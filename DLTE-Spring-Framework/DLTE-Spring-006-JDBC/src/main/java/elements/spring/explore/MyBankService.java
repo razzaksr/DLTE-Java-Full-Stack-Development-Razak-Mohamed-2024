@@ -19,6 +19,12 @@ public class MyBankService {
     private JdbcTemplate jdbcTemplate;
 
     public String apiBlock(Long number, Integer pin){
+        // this commented block will be used on testing since the jdbcTemplate update method return 1 or 0 based on that
+//        jdbcTemplate.update("delete from mybank_creditcard where creditcard_number=? and creditcard_pin=?",
+//                new Object[]{
+//                        number,pin
+//                });
+//        return number+" card is blocked";
         int ack = jdbcTemplate.update("delete from mybank_creditcard where creditcard_number=? and creditcard_pin=?",
                 new Object[]{
                         number,pin
@@ -91,7 +97,7 @@ public class MyBankService {
     }
 
 
-    private class CardMapper implements RowMapper<CreditCard>{
+    protected class CardMapper implements RowMapper<CreditCard>{
 
         @Override
         public CreditCard mapRow(ResultSet rs, int rowNum) throws SQLException {

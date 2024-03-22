@@ -9,6 +9,21 @@ public class CreditCard {
     private Integer creditcardCvv;
     private Date creditcardExpiry;
 
+    public CreditCard() {
+    }
+
+    public CreditCard(Long creditcardNumber, Integer creditcardCvv, Date creditcardExpiry, Integer creditcardPin, Integer creditcardLimit, Integer creditcardUsage, Integer creditcardAvailable, boolean creditcardStatus, String creditcardHolder) {
+        this.creditcardNumber = creditcardNumber;
+        this.creditcardCvv = creditcardCvv;
+        this.creditcardExpiry = creditcardExpiry;
+        this.creditcardPin = creditcardPin;
+        this.creditcardLimit = creditcardLimit;
+        this.creditcardUsage = creditcardUsage;
+        this.creditcardAvailable = creditcardAvailable;
+        this.creditcardStatus = creditcardStatus;
+        this.creditcardHolder = creditcardHolder;
+    }
+
     public Long getCreditcardNumber() {
         return creditcardNumber;
     }
