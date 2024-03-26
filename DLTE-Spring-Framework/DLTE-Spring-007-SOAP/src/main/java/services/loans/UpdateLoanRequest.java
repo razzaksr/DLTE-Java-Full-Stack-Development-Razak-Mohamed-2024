@@ -10,6 +10,7 @@ package services.loans;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -23,6 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="loans" type="{http://loans.services}loans"/>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,9 +35,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "viewAllLoansRequest")
-public class ViewAllLoansRequest {
+@XmlType(name = "", propOrder = {
+    "loans"
+})
+@XmlRootElement(name = "updateLoanRequest")
+public class UpdateLoanRequest {
 
+    @XmlElement(required = true)
+    protected Loans loans;
+
+    /**
+     * Gets the value of the loans property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Loans }
+     *     
+     */
+    public Loans getLoans() {
+        return loans;
+    }
+
+    /**
+     * Sets the value of the loans property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Loans }
+     *     
+     */
+    public void setLoans(Loans value) {
+        this.loans = value;
+    }
 
 }

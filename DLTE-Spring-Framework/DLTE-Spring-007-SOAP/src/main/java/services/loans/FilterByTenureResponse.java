@@ -42,8 +42,8 @@ import javax.xml.bind.annotation.XmlType;
     "serviceStatus",
     "loans"
 })
-@XmlRootElement(name = "viewAllLoansResponse")
-public class ViewAllLoansResponse {
+@XmlRootElement(name = "filterByTenureResponse")
+public class FilterByTenureResponse {
 
     @XmlElement(required = true)
     protected ServiceStatus serviceStatus;

@@ -14,6 +14,39 @@ public class LoansService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    public String closeLoan(long loanId){
+        int acknowledge = jdbcTemplate.update("delete from mybank_loans where loan_id=?",new Object[]{loanId});
+        if(acknowledge!=0)
+            return loanId+" has closed";
+        else
+            return "Invalid "+loanId;
+    }
+
+    public Loans updateLoans(Loans loans){
+        int acknowledge = jdbcTemplate.update("update mybank_loans set loan_tenure=?, loan_interest=?, loan_payable=? where loan_id=?",
+                new Object[]{loans.getLoanTenure(),loans.getLoanInterest(),loans.getLoanPayable(),loans.getLoanId()});
+        if(acknowledge!=0)
+            return loans;
+        else
+            return null;
+    }
+
+    public List<Loans> readByTenure(int minTenure, int maxTenure){
+        List<Loans> shortlisted = jdbcTemplate.query("select * from mybank_loans where loan_tenure between ? and ?",
+                new Object[]{minTenure,maxTenure},new LoansMapper());
+        return shortlisted;
+    }
+
+    public Loans publishNewLoan(Loans loans){
+        int acknowledge = jdbcTemplate.update("insert into mybank_loans values(mybank_loan_seq.nextval,?,?,?,?,?)",
+                new Object[]{loans.getLoanPrinciple(),loans.getLoanBorrower(),loans.getLoanTenure(),
+                        loans.getLoanInterest(),loans.getLoanPayable()});
+        if(acknowledge!=0)
+            return loans;
+        else
+            return null;
+    }
+
     public List<Loans> viewEvery(){
         List<Loans> lists=jdbcTemplate.query("select * from mybank_loans",new LoansMapper());
         System.out.println(lists.toString());

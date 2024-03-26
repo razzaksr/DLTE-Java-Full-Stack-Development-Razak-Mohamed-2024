@@ -8,9 +8,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import services.loans.ServiceStatus;
-import services.loans.ViewAllLoansRequest;
-import services.loans.ViewAllLoansResponse;
+import services.loans.*;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,6 +19,105 @@ public class SoapPhase {
     private final String url="http://loans.services";
     @Autowired
     private LoansService loansService;
+
+    @PayloadRoot(namespace = url, localPart = "closeLoanRequest")
+    @ResponsePayload
+    public CloseLoanResponse closingLoan(@RequestPayload CloseLoanRequest closeLoanRequest){
+        CloseLoanResponse response=new CloseLoanResponse();
+        ServiceStatus serviceStatus=new ServiceStatus();
+        String fromDAO = loansService.closeLoan(closeLoanRequest.getLoanId());
+        if(fromDAO.contains("Invalid")){
+            serviceStatus.setStatus("FAILURE");
+        }
+        else
+            serviceStatus.setStatus("SUCCESS");
+        serviceStatus.setMessage(fromDAO);
+        response.setServiceStatus(serviceStatus);
+        return response;
+    }
+
+    @PayloadRoot(namespace = url, localPart = "updateLoanRequest")
+    @ResponsePayload
+    public UpdateLoanResponse updatingLoan(@RequestPayload UpdateLoanRequest updateLoanRequest){
+        UpdateLoanResponse updateLoanResponse=new UpdateLoanResponse();
+        ServiceStatus serviceStatus=new ServiceStatus();
+        services.loans.Loans loans=new services.loans.Loans();
+
+        Loans daoLoan=new Loans();
+        BeanUtils.copyProperties(updateLoanRequest.getLoans(),daoLoan);
+
+        daoLoan = loansService.updateLoans(daoLoan);
+
+        if(daoLoan!=null){
+            serviceStatus.setStatus("SUCCESS");
+            serviceStatus.setMessage(daoLoan.getLoanBorrower()+" has updated loan details");
+        }
+        else{
+            serviceStatus.setStatus("FAILURE");
+            serviceStatus.setMessage(daoLoan.getLoanBorrower()+" hasn't updated loan details");
+        }
+
+        BeanUtils.copyProperties(daoLoan,loans);
+
+        updateLoanResponse.setServiceStatus(serviceStatus);
+        updateLoanResponse.setLoans(loans);
+
+        return updateLoanResponse;
+    }
+
+    @PayloadRoot(namespace = url,localPart = "filterByTenureRequest")
+    @ResponsePayload
+    public FilterByTenureResponse filterTenure(@RequestPayload FilterByTenureRequest filterByTenureRequest){
+        FilterByTenureResponse filterByTenureResponse=new FilterByTenureResponse();
+        ServiceStatus serviceStatus=new ServiceStatus();
+        List<services.loans.Loans> returnLoans = new ArrayList<>();
+
+        List<Loans> received = loansService.readByTenure(filterByTenureRequest.getMinTenure(), filterByTenureRequest.getMaxTenure());
+
+        Iterator<Loans> iterator= received.iterator();
+
+        while(iterator.hasNext()){
+            services.loans.Loans currentLoans=new services.loans.Loans();
+            BeanUtils.copyProperties(iterator.next(),currentLoans);
+            returnLoans.add(currentLoans);
+        }
+
+        serviceStatus.setStatus("SUCCESS");
+        serviceStatus.setMessage("Loan's were fetched");
+
+        filterByTenureResponse.setServiceStatus(serviceStatus);
+        filterByTenureResponse.getLoans().addAll(returnLoans);
+
+        return  filterByTenureResponse;
+    }
+
+    @PayloadRoot(namespace = url,localPart = "newLoanRequest")
+    @ResponsePayload
+    public NewLoanResponse addNewLoan(@RequestPayload NewLoanRequest newLoanRequest){
+        NewLoanResponse newLoanResponse=new NewLoanResponse();
+        ServiceStatus serviceStatus=new ServiceStatus();
+
+        services.loans.Loans actual= newLoanRequest.getLoans();
+        Loans daoLoan=new Loans();
+        BeanUtils.copyProperties(actual,daoLoan);
+
+        daoLoan = loansService.publishNewLoan(daoLoan);
+
+        if(daoLoan!=null){
+            serviceStatus.setStatus("SUCCESS");
+            serviceStatus.setMessage(daoLoan.getLoanId()+" has inserted");
+        }
+        else{
+            serviceStatus.setStatus("FAILURE");
+            serviceStatus.setMessage(daoLoan.getLoanId()+" hasn't inserted");
+        }
+        newLoanResponse.setServiceStatus(serviceStatus);
+        BeanUtils.copyProperties(daoLoan,actual);
+        newLoanResponse.setLoans(actual);
+
+        return newLoanResponse;
+    }
+
     @PayloadRoot(namespace = url,localPart = "viewAllLoansRequest")
     @ResponsePayload
     public ViewAllLoansResponse listLoans(@RequestPayload ViewAllLoansRequest viewAllLoansRequest){
@@ -47,7 +144,7 @@ public class SoapPhase {
         viewAllLoansResponse.setServiceStatus(serviceStatus);
         viewAllLoansResponse.getLoans().addAll(actualLoans);
 
-        System.out.println(viewAllLoansResponse.getLoans().toString());
+        //System.out.println(viewAllLoansResponse.getLoans().toString());
 
         return viewAllLoansResponse;
     }

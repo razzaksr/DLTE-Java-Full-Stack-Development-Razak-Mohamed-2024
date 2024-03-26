@@ -25,6 +25,76 @@
     </xsd:complexType>
 
     <!--    Operation-->
+
+    <!--    close/delete loan-->
+    <xsd:element name="closeLoanRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="loanId" type="xsd:long"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="closeLoanResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--    Update loan details-->
+    <xsd:element name="updateLoanRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="loans" type="tns:loans"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="updateLoanResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="loans" type="tns:loans"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--    Filter By Tenure range-->
+    <xsd:element name="filterByTenureRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="minTenure" type="xsd:int"/>
+                <xsd:element name="maxTenure" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="filterByTenureResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="loans" type="tns:loans" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--    New Load-->
+    <xsd:element name="newLoanRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="loans" type="tns:loans"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="newLoanResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="loans" type="tns:loans"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!--    List All-->
     <xsd:element name="viewAllLoansRequest">
         <xsd:complexType/>
     </xsd:element>

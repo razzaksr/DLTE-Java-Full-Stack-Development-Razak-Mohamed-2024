@@ -23,6 +23,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="loanId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -31,9 +34,28 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "")
-@XmlRootElement(name = "viewAllLoansRequest")
-public class ViewAllLoansRequest {
+@XmlType(name = "", propOrder = {
+    "loanId"
+})
+@XmlRootElement(name = "closeLoanRequest")
+public class CloseLoanRequest {
 
+    protected long loanId;
+
+    /**
+     * Gets the value of the loanId property.
+     * 
+     */
+    public long getLoanId() {
+        return loanId;
+    }
+
+    /**
+     * Sets the value of the loanId property.
+     * 
+     */
+    public void setLoanId(long value) {
+        this.loanId = value;
+    }
 
 }
