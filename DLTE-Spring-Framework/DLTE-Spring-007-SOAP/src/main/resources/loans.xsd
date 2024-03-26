@@ -26,6 +26,22 @@
 
     <!--    Operation-->
 
+    <!--    Call Procedure-->
+    <xsd:element name="callDeletionRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="loanId" type="xsd:long"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="callDeletionResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
     <!--    close/delete loan-->
     <xsd:element name="closeLoanRequest">
         <xsd:complexType>

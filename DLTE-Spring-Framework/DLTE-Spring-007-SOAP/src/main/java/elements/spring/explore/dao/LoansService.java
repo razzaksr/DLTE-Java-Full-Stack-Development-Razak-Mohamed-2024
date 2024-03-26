@@ -1,18 +1,41 @@
 package elements.spring.explore.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.*;
 import org.springframework.stereotype.Service;
 
+import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class LoansService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    public String proceduralDelete(long loanId){
+
+        CallableStatementCreator creator=con -> {
+            CallableStatement statement=con.prepareCall("{call mybank_loans_deletion(?,?)}");
+            statement.setLong(1,loanId);
+            statement.registerOutParameter(2, Types.VARCHAR);
+            return statement;
+        };
+
+        Map<String,Object> returnedExecution = jdbcTemplate.call(creator, Arrays.asList(
+                new SqlParameter[]{
+                        new SqlParameter(Types.NUMERIC),
+                        new SqlOutParameter("errOrInfo",Types.VARCHAR),
+                }
+        ));
+
+        return returnedExecution.get("errOrInfo").toString();
+
+    }
 
     public String closeLoan(long loanId){
         int acknowledge = jdbcTemplate.update("delete from mybank_loans where loan_id=?",new Object[]{loanId});

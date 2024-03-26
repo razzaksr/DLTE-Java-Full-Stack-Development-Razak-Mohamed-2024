@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="loans" type="{http://loans.services}loans"/>
+ *         &lt;element name="serviceStatus" type="{http://loans.services}serviceStatus"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "loans"
+    "serviceStatus"
 })
-@XmlRootElement(name = "newLoanRequest")
-public class NewLoanRequest {
+@XmlRootElement(name = "callDeletionResponse")
+public class CallDeletionResponse {
 
     @XmlElement(required = true)
-    protected Loans loans;
+    protected ServiceStatus serviceStatus;
 
     /**
-     * Gets the value of the loans property.
+     * Gets the value of the serviceStatus property.
      * 
      * @return
      *     possible object is
-     *     {@link Loans }
+     *     {@link ServiceStatus }
      *     
      */
-    public Loans getLoans() {
-        return loans;
+    public ServiceStatus getServiceStatus() {
+        return serviceStatus;
     }
 
     /**
-     * Sets the value of the loans property.
+     * Sets the value of the serviceStatus property.
      * 
      * @param value
      *     allowed object is
-     *     {@link Loans }
+     *     {@link ServiceStatus }
      *     
      */
-    public void setLoans(Loans value) {
-        this.loans = value;
+    public void setServiceStatus(ServiceStatus value) {
+        this.serviceStatus = value;
     }
 
 }

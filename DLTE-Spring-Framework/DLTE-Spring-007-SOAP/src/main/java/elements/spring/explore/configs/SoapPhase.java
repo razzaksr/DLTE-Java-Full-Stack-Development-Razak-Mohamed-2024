@@ -20,6 +20,21 @@ public class SoapPhase {
     @Autowired
     private LoansService loansService;
 
+    @PayloadRoot(namespace = url,localPart = "callDeletionRequest")
+    @ResponsePayload
+    public CallDeletionResponse deletionByCall(@RequestPayload CallDeletionRequest callDeletionRequest){
+        CallDeletionResponse deletionResponse=new CallDeletionResponse();
+        ServiceStatus serviceStatus=new ServiceStatus();
+        String message = loansService.proceduralDelete(callDeletionRequest.getLoanId());
+        if(message.contains("Invalid loan"))
+            serviceStatus.setStatus("FAILURE");
+        else
+            serviceStatus.setStatus("SUCCESS");
+        serviceStatus.setMessage(message);
+        deletionResponse.setServiceStatus(serviceStatus);
+        return deletionResponse;
+    }
+
     @PayloadRoot(namespace = url, localPart = "closeLoanRequest")
     @ResponsePayload
     public CloseLoanResponse closingLoan(@RequestPayload CloseLoanRequest closeLoanRequest){
