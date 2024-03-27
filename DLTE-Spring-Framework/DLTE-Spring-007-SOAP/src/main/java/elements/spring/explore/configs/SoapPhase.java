@@ -120,16 +120,15 @@ public class SoapPhase {
 
         if(daoLoan!=null){
             serviceStatus.setStatus("SUCCESS");
-            serviceStatus.setMessage(daoLoan.getLoanId()+" has inserted");
+            BeanUtils.copyProperties(daoLoan,actual);
+            newLoanResponse.setLoans(actual);
+            serviceStatus.setMessage(actual.getLoanId()+" has inserted");
         }
         else{
             serviceStatus.setStatus("FAILURE");
-            serviceStatus.setMessage(daoLoan.getLoanId()+" hasn't inserted");
+            serviceStatus.setMessage(actual.getLoanId()+" hasn't inserted");
         }
         newLoanResponse.setServiceStatus(serviceStatus);
-        BeanUtils.copyProperties(daoLoan,actual);
-        newLoanResponse.setLoans(actual);
-
         return newLoanResponse;
     }
 
@@ -140,7 +139,7 @@ public class SoapPhase {
         ServiceStatus serviceStatus=new ServiceStatus();
         // loans>> dao
         List<Loans> fromDao=loansService.viewEvery();
-        System.out.println(fromDao.toString());
+//        System.out.println(fromDao.toString());
 
         // soap Loan
         List<services.loans.Loans> actualLoans=new ArrayList<>();

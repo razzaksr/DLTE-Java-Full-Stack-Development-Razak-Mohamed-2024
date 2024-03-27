@@ -8,6 +8,30 @@ public class Loans {
     private double loanInterest;
     private double loanPayable;
 
+    @Override
+    public String toString() {
+        return "Loans{" +
+                "loanId=" + loanId +
+                ", loanPrinciple=" + loanPrinciple +
+                ", loanBorrower='" + loanBorrower + '\'' +
+                ", loanTenure=" + loanTenure +
+                ", loanInterest=" + loanInterest +
+                ", loanPayable=" + loanPayable +
+                '}';
+    }
+
+    public Loans() {
+    }
+
+    public Loans(long loanId, double loanPrinciple, String loanBorrower, int loanTenure, double loanInterest, double loanPayable) {
+        this.loanId = loanId;
+        this.loanPrinciple = loanPrinciple;
+        this.loanBorrower = loanBorrower;
+        this.loanTenure = loanTenure;
+        this.loanInterest = loanInterest;
+        this.loanPayable = loanPayable;
+    }
+
     public long getLoanId() {
         return loanId;
     }
