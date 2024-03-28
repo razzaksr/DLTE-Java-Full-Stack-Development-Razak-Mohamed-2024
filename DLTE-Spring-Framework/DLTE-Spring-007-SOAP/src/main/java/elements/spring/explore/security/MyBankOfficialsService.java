@@ -16,9 +16,10 @@ public class MyBankOfficialsService implements UserDetailsService {
 
 
     public MyBankOfficials signingUp(MyBankOfficials myBankOfficials){
-        int ack = jdbcTemplate.update("insert into mybank_officials values(?,?,?,?)",new Object[]{
+        int ack = jdbcTemplate.update("insert into mybank_officials values(?,?,?,?,?)",new Object[]{
                 myBankOfficials.getFullName(),myBankOfficials.getUsername(),
-                myBankOfficials.getPassword(),myBankOfficials.getContact()
+                myBankOfficials.getPassword(),myBankOfficials.getContact(),
+                myBankOfficials.getRole()
         });
         return myBankOfficials;
     }

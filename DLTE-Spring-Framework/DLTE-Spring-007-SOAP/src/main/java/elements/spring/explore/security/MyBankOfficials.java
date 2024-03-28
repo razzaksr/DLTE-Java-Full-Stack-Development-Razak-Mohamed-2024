@@ -1,8 +1,10 @@
 package elements.spring.explore.security;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class MyBankOfficials implements UserDetails {
@@ -10,6 +12,15 @@ public class MyBankOfficials implements UserDetails {
     private String username;
     private String password;
     private long contact;
+    private String role;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getFullName() {
         return fullName;
@@ -49,7 +60,9 @@ public class MyBankOfficials implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<SimpleGrantedAuthority> authorities=new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(role));
+        return authorities;
     }
 
     public String getPassword() {

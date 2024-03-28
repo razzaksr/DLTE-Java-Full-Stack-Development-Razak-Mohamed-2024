@@ -4,6 +4,7 @@ import elements.spring.explore.dao.Loans;
 import elements.spring.explore.dao.LoansService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
@@ -35,6 +36,7 @@ public class SoapPhase {
         return deletionResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('admin','manager')")
     @PayloadRoot(namespace = url, localPart = "closeLoanRequest")
     @ResponsePayload
     public CloseLoanResponse closingLoan(@RequestPayload CloseLoanRequest closeLoanRequest){
@@ -51,6 +53,7 @@ public class SoapPhase {
         return response;
     }
 
+    @PreAuthorize("hasAuthority('admin')")
     @PayloadRoot(namespace = url, localPart = "updateLoanRequest")
     @ResponsePayload
     public UpdateLoanResponse updatingLoan(@RequestPayload UpdateLoanRequest updateLoanRequest){
@@ -80,6 +83,7 @@ public class SoapPhase {
         return updateLoanResponse;
     }
 
+    @PreAuthorize("hasAuthority('clerk')")
     @PayloadRoot(namespace = url,localPart = "filterByTenureRequest")
     @ResponsePayload
     public FilterByTenureResponse filterTenure(@RequestPayload FilterByTenureRequest filterByTenureRequest){
@@ -106,6 +110,7 @@ public class SoapPhase {
         return  filterByTenureResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('admin','manager')")
     @PayloadRoot(namespace = url,localPart = "newLoanRequest")
     @ResponsePayload
     public NewLoanResponse addNewLoan(@RequestPayload NewLoanRequest newLoanRequest){
@@ -132,6 +137,7 @@ public class SoapPhase {
         return newLoanResponse;
     }
 
+    @PreAuthorize("hasAnyAuthority('clerk','cashier')")
     @PayloadRoot(namespace = url,localPart = "viewAllLoansRequest")
     @ResponsePayload
     public ViewAllLoansResponse listLoans(@RequestPayload ViewAllLoansRequest viewAllLoansRequest){
