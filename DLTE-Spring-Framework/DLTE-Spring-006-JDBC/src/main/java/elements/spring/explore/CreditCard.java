@@ -26,7 +26,7 @@ public class CreditCard {
     private Integer creditcardPin;
     @NotNull(message = "{card.limit.null}")
     private Integer creditcardLimit;
-    @NotNull(message = "{card.limit.usage}")
+    @NotNull(message = "{card.usage.null}")
     private Integer creditcardUsage;
     @NotNull(message = "{card.available.null}")
     private Integer creditcardAvailable;
