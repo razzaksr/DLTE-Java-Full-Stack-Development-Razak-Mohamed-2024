@@ -1,15 +1,44 @@
 package elements.spring.explore;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
-
+import java.util.ResourceBundle;
 public class CreditCard {
     // creditCardNumber = credit_card_number
+    @NotNull(message = "Credit card number should be present")
     private Long creditcardNumber;
+    @NotNull(message = "CVV number must be valid")
+    @Digits(integer = 3, fraction = 0, message = "${card.cvv}")
     private Integer creditcardCvv;
+    @NotNull(message = "Expiry date must be present")
+    @Future(message = "Invalid date")
     private Date creditcardExpiry;
+    @NotNull(message = "PIN must be present")
+    @Digits(integer = 4, fraction = 0, message = "Invalid PIN ")
+    private Integer creditcardPin;
+    @NotNull(message = "Limit must be valid one")
+    private Integer creditcardLimit;
+    @NotNull(message = "Usage must be valid")
+    private Integer creditcardUsage;
+    @NotNull(message = "Card availability must be valid number")
+    private Integer creditcardAvailable;
+    @NotNull(message = "Card status must be valid")
+    private boolean creditcardStatus;
+
+    @NotNull(message = "Credit card holder should not empty")
+    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "Invalid Credit card holder")
+    private String creditcardHolder;
 
     public CreditCard() {
+
     }
 
     @Override
@@ -110,11 +139,4 @@ public class CreditCard {
     public void setCreditcardHolder(String creditcardHolder) {
         this.creditcardHolder = creditcardHolder;
     }
-
-    private Integer creditcardPin;
-    private Integer creditcardLimit;
-    private Integer creditcardUsage;
-    private Integer creditcardAvailable;
-    private boolean creditcardStatus;
-    private String creditcardHolder;
 }

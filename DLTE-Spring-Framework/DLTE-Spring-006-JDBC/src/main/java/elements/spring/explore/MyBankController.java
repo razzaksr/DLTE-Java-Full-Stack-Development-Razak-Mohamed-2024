@@ -5,13 +5,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.sql.SQLException;
 import java.sql.SQLSyntaxErrorException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping("/credit")
@@ -42,6 +43,31 @@ public class MyBankController {
             logger.warn(cardException.toString());
         }
         return creditCard1;
+    }
+
+    @PostMapping("/insert")
+    public ResponseEntity<Object> save(@Valid @RequestBody CreditCard creditCard){
+        CreditCard creditCard1=null;
+        try{
+            creditCard1=creditCard;
+//            creditCard1 = myBankService.apiSave(creditCard);
+        }
+        catch (CardException cardException){
+            logger.warn(cardException.toString());
+        }
+        return ResponseEntity.ok(creditCard1);
+    }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public Map<String, String> handleValidationExceptions(
+            MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return errors;
     }
 
     @PostMapping("/new")
