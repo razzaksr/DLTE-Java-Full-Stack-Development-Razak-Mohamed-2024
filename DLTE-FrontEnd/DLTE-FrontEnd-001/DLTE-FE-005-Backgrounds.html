@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Items</title>
+    <style>
+        iframe{
+            height: 100vh;
+        }
+        body{
+            background: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-image: url('/files/vv-model.png');
+        }
+        #shad{
+            filter: drop-shadow(10px 10px 10px red);
+        }
+        #box-shad{
+            box-shadow: 10px 10px 10px red;
+        }
+        #shad:hover{
+            filter: drop-shadow(10px 10px 10px blue);
+            width: 50%;
+            height: 400px;
+        }
+        #box-shad{
+            box-shadow: 10px 10px 10px red;
+        }
+    </style>
+</head>
+<body>
+    <iframe src="DLTE-FE-001-HTMLComponents.html" width="100%" ></iframe>
+    <iframe src="DLTE-FE-002-Grouping.html" width="100%" ></iframe>
+    <iframe src="DLTE-FE-003-Alignment.html" width="100%" ></iframe>
+    <iframe src="DLTE-FE-004-Media.html" width="100%" ></iframe>
+
+    <img id="shad" src="/files/hsbc.png" />
+    <img id="box-shad" src="/files/hsbc.png" />
+</body>
+</html>
