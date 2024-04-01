@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grouping Componenets</title>
+    <style>
+        .form-one{
+            text-align: end;
+            color: wheat;
+            background-color: black;
+        }
+        .form-one:hover{
+            background-color: wheat;
+            color: black;
+        }
+        input{
+            border: 2px;
+            border-color: blue;
+            border-style: dotted;
+            border-radius: 50px;
+        }
+        button{
+            box-shadow: 10px 10px 5px grey;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px;
+        }
+        #update{
+            color: blueviolet;
+            background-color: azure;
+        }
+        .btn-one{
+            background-color: chocolate;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+        }
+        #child{
+            flex: 1;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-one">
+        <label>My KYC Contact number</label>
+        <input type="text" name="contact" placeholder="Contact numebr" />
+    </div>
+
+    <section class="btn-one">
+        <button id="child">List All</button>
+        <button id="child">List One</button>
+        <button id="child">List One</button>
+        <button id="child">List One</button>
+        <button id="update">Update All</button>
+    </section>
+</body>
+</html>

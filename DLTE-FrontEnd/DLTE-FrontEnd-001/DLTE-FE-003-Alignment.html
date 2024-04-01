@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horizontal and Vertical Alignment</title>
+    <style>
+        .row1{
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            background-color: brown;
+        }
+        #column{
+            border: 10px;
+            border-style: dashed;
+        }
+        .row2{
+            container: 100%;
+            display: flex;
+            width: 100%;
+            justify-content: space-evenly;
+            background-color: darkcyan;
+        }
+        .row3{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 20vh;
+        }
+        #child{
+            width: 70px;
+            height: 40px;
+            align-self: center;
+        }
+    </style>
+    <!-- Vertical alignment: align-self(child), align-items(parent) -->
+</head>
+<body>
+    <div class="row1">
+        <div id="column">Add</div>
+        <div id="column">Remove</div>
+        <div id="column">Add</div>
+        <div id="column">Remove</div>
+        <div id="column">Add</div>
+        <div id="column">Remove</div>
+    </div>
+    <div class="row2">
+        <div id="column">Add</div>
+        <div id="column">Remove</div>
+        <div id="column">Add</div>
+        <div id="column">Remove</div>
+        <div id="column">Add</div>
+        <div id="column">Remove</div>
+    </div>
+    <div class="row3">
+        <button id="child">myBank Products</button>
+        <ul style="border: 10px;border-style: dashed;">
+            <li>CASA</li>
+            <li>Cards</li>
+            <li>Loans</li>
+        </ul>
+    </div>
+</body>
+</html>
