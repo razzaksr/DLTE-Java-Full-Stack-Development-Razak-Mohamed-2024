@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+/* table{
+    border-radius: 10px;
+    border: 10px 10px 10px 10px blue;
+    border-style: double;
+    box-shadow: 10px 10px 10px grey;
+    text-align: center;
+    background-image: url('/external/hsbc.png');
+    background-repeat: no-repeat;
+    background-position: center;
+} */
+table{
+    border-radius: 10px;
+    border: 10px 10px 10px 10px blue;
+    border-style: double;
+    box-shadow: 10px 10px 10px grey;
+    text-align: center;
+    flex: 10;
+}
+table::before{
+    content: '';
+    position: absolute;
+    top:0;bottom: 0;left: 0;right: 0;
+    background: url('/external/tieto.jpg') center no-repeat;
+    /* background-image: url('/external/hsbc.png');
+    background-repeat: no-repeat;
+    background-position: center; */
+    opacity: 0.5; /* Set the opacity level here */
+    z-index: -1;
+}
+thead{
+    text-transform: uppercase;
+    text-decoration: solid;
+    color: black;
+}
+tbody{
+    color: darkviolet;
+}
+td:hover{
+    font-size: 20px;
+    background-color: red;
+}
