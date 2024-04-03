@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Components</title>
+    <link rel="stylesheet" href="/files/medias.css" />
+    <style>
+        .media{
+            display: flex;
+            justify-content: center;
+        }
+        #aligns{
+            align-self: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="media">
+        <audio controls id="aligns">
+            <source src="/files/Peru.mp4"/>
+        </audio>
+        <video controls muted autoplay>
+            <source src="/files/Peru.mp4"/>
+        </video>
+    </div>
+</body>
+</html>

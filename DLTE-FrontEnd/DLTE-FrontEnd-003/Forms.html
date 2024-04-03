@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank Creditcard Application</title>
+    <link rel="stylesheet" href="external/forms.css" />
+</head>
+<body>
+    <div class="banner">
+        <h1>MyBank</h1>
+        <h1>Creditcard Portal</h1>
+    </div>
+    <hr color="purple"/>
+    <h2>New Creditcard application</h2>
+    <div class="row">
+        <form name="application" action="#" class="column">
+            <div class="input-group">
+                <label>Applicant Name</label>
+                <input type="text" name="applicantName" placeholder="Applicant's name" />
+            </div>
+            <div class="input-group">
+                <label>Applicant DOB</label>
+                <input id="dates" type="date" name="applicantDOB" placeholder="Applicant's dob" />
+            </div>
+            <div class="input-group">
+                <label>Expected Limit</label>
+                <input type="number" name="expectedLimit" placeholder="ExpectedLimit" />
+            </div>
+            <div class="input-group">
+                <label>Card purpose</label>
+                <select name="cardPurpose" multiple>
+                    <option>Selectr Purpose</option>
+                    <option>Travel</option><option>Shopping</option><option>Fuel</option>
+                    <option>International</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>Type of card</label>
+                <div>
+                    <input type="radio" name="cardType" value="rupay" />Rupay
+                    <input type="radio" name="cardType" value="visa" />VISA
+                </div>
+            </div>
+            <div class="input-group">
+                <label>Applicant EMAIL</label>
+                <input type="email" name="applicantEmail" placeholder="Applicant's Email" />
+            </div>
+            <div class="input-group">
+                <label>Applicant Contact</label>
+                <input type="tel" name="applicantContact" placeholder="Applicant's contact" />
+            </div>
+            <div class="file">
+                <label>Applicant PAN</label>
+                <input type="file" name="applicantPAN" placeholder="Applicant's PAN " />
+            </div>
+            <div class="btn-group">
+                <input type="submit" value="Apply"/>
+                <input type="reset" value="Cancel"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
