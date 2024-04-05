@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java script Overview</title>
+</head>
+<body>
+    <script>
+        var bankerName='Razak Mohamed S';
+        const bankUserType='admin';
+        console.log(typeof(bankerName))
+        bankerName='Shahul Hameed A';
+        document.writeln(bankerName)
+        try{
+            bankUserType='manager';
+        }
+        catch(error){
+            console.log(error)
+        }
+        document.writeln(bankUserType)
+
+        /*
+        let aadhaar = prompt("Enter the aadhaar number ","")
+        console.log(typeof(aadhaar))
+        aadhaar+=2
+        document.writeln("<h1>"+ aadhaar +"</h1>")
+        document.writeln("<h1>"+ typeof(aadhaar) +"</h1>")
+        */
+
+        var myCard={
+            "cardNumber":76456789454345,
+            "cardHolder":"Akshira",
+            "cardCvv":123,
+            "cardStatus":"Blocked",
+            "isRupay":false
+        }
+
+        document.writeln(JSON.stringify(myCard)+"<p>"+typeof(myCard)+"</p>")
+        document.writeln(myCard.cardHolder+"<br/>"+myCard['isRupay']+"<br/>"+typeof(myCard.isRupay))
+
+        document.write(myCard['cardExpiry'])
+
+        myCard['cardExpiry']='2034-01-01';
+
+        document.write(JSON.stringify(myCard))
+    </script>
+</body>
+</html>

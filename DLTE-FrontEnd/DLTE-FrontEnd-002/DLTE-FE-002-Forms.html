@@ -58,7 +58,13 @@
                 <input type="submit" value="Apply"/>
                 <input type="reset" value="Cancel"/>
             </div>
+            <output name="acknowledge">My Submission</output>
         </form>
     </div>
+    <script>
+        alert("Write into output")
+        //document.getElementsByTagName("output")[0].innerHTML="Applied creditcard successfully"
+        document.forms['application'].acknowledge.value="Divija Applied creditcard successfully"
+    </script>
 </body>
 </html>
