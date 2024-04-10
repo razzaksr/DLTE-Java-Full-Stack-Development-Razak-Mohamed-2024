@@ -1,5 +1,42 @@
 let repository=[]
 
+const put=()=>{
+    var myForm = document.forms['modify']
+    const name = myForm.applicantName.value
+    const dob = myForm.applicantDOB.value
+    const expectedLimit = myForm.expectedLimit.value
+    const purpose = myForm.cardPurpose.value
+    const type = myForm.cardType.value
+    const contact = myForm.applicantContact.value
+    const email = myForm.applicantEmail.value
+    const pan = myForm.applicantPAN.value
+    const obj = {
+        "applicantName":name,"applicantContact":contact,"applicantDob":dob,
+        "applicantEmail":email,"applicantLimit":expectedLimit,
+        "applicantPan":pan,"cardPurpose":purpose,"cardType":type
+    }
+    var index=0
+    repository.map((each,position)=>{
+        if (each.applicantContact===obj.applicantContact){
+            index=position
+            return
+        }
+    })
+    repository[index]=obj
+    dumpStore()
+    location.assign("/Tables.html")
+}
+
+const remove=()=>{
+    // event.preventDefault();
+    var panTobeDeleted=document.getElementById('del').value
+    repository = repository.filter((each)=>{
+        return each.applicantPan!==panTobeDeleted
+    })    
+    dumpStore()
+    location.assign("/Tables.html")
+}
+
 var create=()=>{
     var myForm = document.forms['application']
     const name = myForm.applicantName.value
@@ -28,7 +65,7 @@ const iterate=()=>{
         content+="<tr>"
         content+="<td>"+each.applicantName+"</td><td>"+
         each.applicantPan+"</td><td>"+each.applicantContact+"</td><td>"+
-        each.applicantLimit+"</td><td></tr>"
+        each.applicantLimit+"</td></tr>"
     })
     document.getElementById("records").innerHTML=content
 }

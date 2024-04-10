@@ -9,13 +9,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="files/service.js"></script>
+    <script>
+        window.onload=iterate
+    </script>
 </head>
 <body>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10 col-12 table-responsive">
                 <table class="table table-striped p-5 rounded-5 shadow-lg text-nowrap text-center">
-                    <thead onmouseenter="iterate()" onmouseleave="document.getElementById('records').innerHTML=''">
+                    <!-- <thead onmouseenter="iterate()" onmouseleave="document.getElementById('records').innerHTML=''"> -->
+                    <thead>
                         <tr>
                             <th>Applicant Name</th><th>Applicant PAN</th><th>Applicant Contact</th>
                             <th>Card Limit</th>
@@ -25,6 +29,59 @@
                         
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <input type="text" class="form-control" onchange="remove()" id="del" placeholder="PAN to delete" />
+        <div class="row justify-content-center align-items-center" style="height: 100vh;">
+            <div class="col-lg-7 col-md-8 col-12">
+                <h1 class="text-primary text-center">Edit Application</h1>
+                <form name="modify" action="#" class="rounded-5 shadow-lg p-5">
+                    <div class="form group">
+                        <label>Applicant Name</label>
+                        <input type="text" class="form-control" name="applicantName" placeholder="Applicant's name" />
+                    </div>
+                    <div class="form group">
+                        <label>Applicant DOB</label>
+                        <input id="dates" class="form-control" type="date" name="applicantDOB" placeholder="Applicant's dob" />
+                    </div>
+                    <div class="form group">
+                        <label>Expected Limit</label>
+                        <input type="number" class="form-control" name="expectedLimit" placeholder="ExpectedLimit" />
+                    </div>
+                    <div class="form group">
+                        <label>Card purpose</label>
+                        <select class="form-select" name="cardPurpose" multiple>
+                            <option>Selectr Purpose</option>
+                            <option>Travel</option><option>Shopping</option><option>Fuel</option>
+                            <option>International</option>
+                        </select>
+                    </div>
+                    <div class="form-check-inline">
+                        <label class="form-check-label">Type of card</label>
+                        <div>
+                            <input type="radio" class="form-check-input" name="cardType" value="rupay" />Rupay
+                            <input type="radio" class="form-check-input" name="cardType" value="visa" />VISA
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-lg-6 col-12">
+                            <label>Applicant EMAIL</label>
+                            <input class="form-control" type="email" name="applicantEmail" placeholder="Applicant's Email" />
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <label>Applicant Contact</label>
+                            <input class="form-control" type="tel" name="applicantContact" placeholder="Applicant's contact" />
+                        </div>
+                    </div>
+                    <div class="file">
+                        <label>Applicant PAN</label>
+                        <input class="form-control" type="file" name="applicantPAN" placeholder="Applicant's PAN " />
+                    </div>
+                    <div class="row justify-content-around mt-3">
+                        <input onclick="put()" class="col-3 btn btn-outline-primary" type="button" value="Apply"/>
+                        <input class="col-3 btn btn-outline-danger" type="reset" value="Cancel"/>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
