@@ -13,6 +13,30 @@ public class MyBankOfficials implements UserDetails {
     private String password;
     private long contact;
     private String role;
+    private int attempts;
+
+    public int getAttempts() {
+        return attempts;
+    }
+
+    public void setAttempts(int attempts) {
+        this.attempts = attempts;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getMaxAttempt() {
+        return maxAttempt;
+    }
+
+    private int status;
+    private final int maxAttempt=3;
 
     public String getRole() {
         return role;

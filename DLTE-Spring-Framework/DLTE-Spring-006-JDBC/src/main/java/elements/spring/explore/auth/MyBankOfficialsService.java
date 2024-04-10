@@ -1,5 +1,7 @@
 package elements.spring.explore.auth;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 public class MyBankOfficialsService implements UserDetailsService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    Logger logger= LoggerFactory.getLogger(MyBankOfficialsService.class);
 
 
     public MyBankOfficials signingUp(MyBankOfficials myBankOfficials){
@@ -27,6 +31,18 @@ public class MyBankOfficialsService implements UserDetailsService {
         MyBankOfficials myBankOfficials = jdbcTemplate.queryForObject("select * from mybank_officials where username=?",
                 new Object[]{username},new BeanPropertyRowMapper<>(MyBankOfficials.class));
         return myBankOfficials;
+    }
+
+    public void updateAttempts(MyBankOfficials myBankOfficials){
+        jdbcTemplate.update("update mybank_officials set attempts=? where username=?",
+                new Object[]{myBankOfficials.getAttempts(),myBankOfficials.getUsername()});
+        logger.info("Attempts are updated");
+    }
+
+    public void updateStatus(MyBankOfficials myBankOfficials){
+        jdbcTemplate.update("update mybank_officials set status=0 where username=?",
+                new Object[]{myBankOfficials.getUsername()});
+        logger.info("Status has changed");
     }
 
     @Override

@@ -26,6 +26,11 @@ public class CardSecureConfig {
 
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    OfficialsFailureHandler officialsFailureHandler;
+    @Autowired
+    OfficialsSuccessHandler officialsSuccessHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -42,7 +47,10 @@ public class CardSecureConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.httpBasic();
-        httpSecurity.formLogin();
+        httpSecurity.formLogin().
+                usernameParameter("username").
+                failureHandler(officialsFailureHandler).
+                successHandler(officialsSuccessHandler);
         httpSecurity.csrf().disable();
 
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
