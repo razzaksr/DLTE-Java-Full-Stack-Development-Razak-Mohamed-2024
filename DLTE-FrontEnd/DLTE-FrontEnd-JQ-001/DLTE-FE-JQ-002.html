@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Events</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        let repository=[]
+        let loadStore=()=>{
+            var data = localStorage.getItem('applicants')
+            repository=JSON.parse(data)
+        }
+        const iterate=()=>{
+            loadStore()
+            /*
+            $("thead").click(()=>{
+                repository.map((each)=>{
+                    $("#records").append("<tr><td>"+each.applicantName+"</td><td>"+
+                        each.applicantPan+"</td><td>"+each.applicantContact+"</td><td>"+
+                        each.applicantLimit+"</td></tr>")
+                })
+            }).dblclick(()=>{
+                $("#records").empty()
+            })
+            */
+            $("thead").on({
+                click:function(){
+                    repository.map((each)=>{
+                        $("#records").append("<tr><td>"+each.applicantName+"</td><td>"+
+                            each.applicantPan+"</td><td>"+each.applicantContact+"</td><td>"+
+                            each.applicantLimit+"</td></tr>")
+                    })
+                },
+                dblclick:function(){
+                    $("#records").empty()
+                }
+            })
+        }
+        $("document").ready(()=>{
+            loadStore()
+            repository.map((each)=>{
+                $("#records").append("<tr><td>"+each.applicantName+"</td><td>"+
+                    each.applicantPan+"</td><td>"+each.applicantContact+"</td><td>"+
+                    each.applicantLimit+"</td></tr>")
+            })
+            $("#phrase").change(()=>{
+                $("#records").empty()
+                repository.map((each)=>{
+                    if(each.applicantName.includes($("#phrase").val())){
+                        $("#records").append("<tr><td>"+each.applicantName+"</td><td>"+
+                            each.applicantPan+"</td><td>"+each.applicantContact+"</td><td>"+
+                            each.applicantLimit+"</td></tr>")
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-12 table-responsive">
+                <table class="table table-striped p-5 rounded-5 shadow-lg text-nowrap text-center">
+                    <thead>
+                        <tr>
+                            <th>Applicant Name</th><th>Applicant PAN</th><th>Applicant Contact</th>
+                            <th>Card Limit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="records">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-around mt-5">
+            <div class="col-2">
+                <label>Filter by name</label>
+                <input type="text" id="phrase" class="form-control" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>
