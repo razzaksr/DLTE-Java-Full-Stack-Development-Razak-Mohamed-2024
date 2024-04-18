@@ -9,6 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         .card:hover{
             transition: 0.3s;
@@ -16,6 +17,38 @@
         }
     </style>
     <script>
+
+        const terminate=(number)=>{
+            let soapRequest = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://loans.services">
+                <soapenv:Header/>
+                <soapenv:Body>
+                   <loan:callDeletionRequest>
+                      <loan:loanNumber>${number}</loan:loanNumber>
+                   </loan:callDeletionRequest>
+                </soapenv:Body>
+             </soapenv:Envelope>`
+
+             $.ajax({
+                url:"http://localhost:8082/loansrepo",
+                type:"POST",
+                dataType:"xml",
+                beforeSend:function(handler){
+                    handler.setRequestHeader("Authorization","Basic "+btoa("divija:Patwardhan"))
+                    handler.setRequestHeader("SOAPAction","callDeletionRequest")
+                },
+                contentType:"text/xml;charset=utf-8",
+                data:soapRequest,
+                success:function(response){
+                    const info = $(response).find(`ns2\\:serviceStatus`).find("ns2\\:status").text()
+                    alert(info)
+                    location.assign("http://127.0.0.1:5500/ViewAll.html")
+                },
+                error:function(err){
+                    const info = $(response).find(`ns2\\:serviceStatus`).find("ns2\\:status").text()
+                    alert(info)
+                }
+            })
+        }
 
         const callGetAllLoans=()=>{
             $.ajax({
@@ -42,6 +75,7 @@
                                <p class="card-text float-start">${each.loanRoi}</p>
                                <p class="card-text float-end">${each.loanType}</p>
                             </div>
+                            <button onclick="terminate(${each.loanNumber})" class="col-2 btn btn-outline-danger"><span class="bi bi-trash3"></span></button>
                         </div>
                         `)
                     })
