@@ -47,7 +47,7 @@
                     type:"POST",
                     dataType:"xml",
                     beforeSend:function(handler){
-                        handler.setRequestHeader("Authorization","Basic "+btoa("divija:Patwardhan"))
+                        handler.setRequestHeader("Authorization","Basic "+sessionStorage.getItem("logged"))
                         handler.setRequestHeader("SOAPAction","updateLoanRequest")
                     },
                     contentType:"text/xml;charset=utf-8",

@@ -33,7 +33,7 @@
                 type:"POST",
                 dataType:"xml",
                 beforeSend:function(handler){
-                    handler.setRequestHeader("Authorization","Basic "+btoa("divija:Patwardhan"))
+                    handler.setRequestHeader("Authorization","Basic "+sessionStorage.getItem("logged"))
                     handler.setRequestHeader("SOAPAction","callDeletionRequest")
                 },
                 contentType:"text/xml;charset=utf-8",
@@ -55,7 +55,7 @@
                 url:"http://localhost:8082/",
                 type:"GET",
                 beforeSend:function(handler){
-                    handler.setRequestHeader("Authorization","Basic "+btoa("prashant:mite"))
+                    handler.setRequestHeader("Authorization","Basic "+sessionStorage.getItem("logged"))
                 },
                 success:function(response){
                     // alert(JSON.stringify(response))

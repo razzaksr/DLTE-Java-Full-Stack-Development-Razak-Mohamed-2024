@@ -38,7 +38,7 @@
                     type:"POST",
                     dataType:"text",
                     beforeSend:function(handler){
-                        handler.setRequestHeader("Authorization","Basic "+btoa("shreyas:shetty"))
+                        handler.setRequestHeader("Authorization","Basic "+sessionStorage.getItem("logged"))
                     },
                     contentType:"application/json;charset=utf-8",
                     data:JSON.stringify(request),
