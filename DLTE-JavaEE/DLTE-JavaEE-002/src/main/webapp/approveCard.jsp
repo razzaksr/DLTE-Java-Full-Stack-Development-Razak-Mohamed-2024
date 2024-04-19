@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+<% response.setHeader("Cache-Control","no-cache,no-store,must-revalidate");
+    if(session.getAttribute("username")!=null){ %>
 <nav class="navbar navbar-expand-lg" style="background:linear-gradient(90deg,white,red);">
     <div class="container-fluid">
         <!-- 1st logo/ brand -->
@@ -28,13 +30,16 @@
         <div class="collapse navbar-collapse" id="myBankMenu">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
+                    <p class="text-light display-6">Hi, <%=session.getAttribute("username")%></p>
+                </li>
+                <li class="nav-item">
                     <a href="view" class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-list-columns"></span> View</a>
                 </li>
                 <li class="nav-item">
                     <a href="approveCard.jsp" class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-cloud-plus-fill"></span> New</a>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-door-open"></span> Logout</a>
+                    <a href="logout" class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-door-open"></span> Logout</a>
                 </li>
                 <li>
                     <form action="viewByLimit.jsp">
@@ -119,5 +124,9 @@
             </form>
         </div>
     </div>
+<% }
+else {
+    response.sendRedirect("index.jsp");
+}%>
 </body>
 </html>

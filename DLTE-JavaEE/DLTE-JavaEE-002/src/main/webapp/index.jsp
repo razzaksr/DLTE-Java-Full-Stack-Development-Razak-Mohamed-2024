@@ -18,7 +18,24 @@
 <%--    <input type="submit" value="filter">--%>
 <%--</form>--%>
 <%--<a href="dashboard.jsp">Dashboard</a>--%>
-
+<div class="container">
+    <div class="row justify-content-center">
+        <form method="post" action="authorize" class="col-lg-3 col-md-6 col-12 align-self-center p-5 rounded-5 shadow">
+            <div class="form group">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" placeholder="USername"/>
+            </div>
+            <div class="form group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Password"/>
+            </div>
+            <div class="m-5 row justify-content-around">
+                <button id="login" class="col-3 btn btn-outline-primary bi bi-door-closed-fill"></button>
+                <button id="cancel" class="col-3 btn btn-outline-dark bi bi-x-circle-fill"></button>
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>
 
