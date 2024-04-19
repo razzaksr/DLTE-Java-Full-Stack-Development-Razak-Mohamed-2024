@@ -16,6 +16,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg" style="background:linear-gradient(90deg,white,red);">
+    <div class="container-fluid">
+        <!-- 1st logo/ brand -->
+        <a class="navbar-brand text-danger display-6 text-uppercase" style="font-weight: bold;" href="#">MyBank</a>
+        <!-- 2nd toggle a -->
+        <a class="navbar-toggler bg-light" type="a" data-bs-toggle="collapse" data-bs-target="#myBankMenu">
+            <span class="navbar-toggler-icon"></span>
+        </a>
+        <!-- 3rd Menu -->
+        <div class="collapse navbar-collapse" id="myBankMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="view" class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-list-columns"></span> View</a>
+                </li>
+                <li class="nav-item">
+                    <a href="approveCard.jsp" class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-cloud-plus-fill"></span> New</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light rounded-5 me-2"><span class="bi bi-door-open"></span> Logout</a>
+                </li>
+                <li>
+                    <form action="viewByLimit.jsp">
+                        <input type="text" name="limit" />
+                        <input type="submit" value="filter">
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
     <%
         String info = (String)request.getAttribute("info");
         String error = (String)request.getAttribute("error");

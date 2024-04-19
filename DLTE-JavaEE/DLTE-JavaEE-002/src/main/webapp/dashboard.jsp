@@ -1,16 +1,14 @@
-<%@ page import="java.util.List" %>
-<%@ page import="app.mybank.entity.CreditCard" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: SRDB
   Date: 19-04-2024
-  Time: 11:54 am
+  Time: 03:43 pm
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-
-    <title>View Credit cards</title>
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
@@ -48,44 +46,42 @@
         </div>
     </div>
 </nav>
-
-    <%
-        List<CreditCard> cards =(List<CreditCard>) request.getAttribute("myCards");
-        pageContext.setAttribute("myData",cards,PageContext.APPLICATION_SCOPE);
-    %>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-8 col-12 table-responsive p-5 shadow-lg">
-                <table class="table table-striped text-nowrap">
-                    <thead>
-                        <tr>
-                            <th>Credit card number</th><th>Credit card holder</th>
-                            <th>Credit card limit</th><th>Credit card available</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%for(CreditCard each:cards){%>
-                            <tr>
-                                <td><%out.print(each.getCardNumber());%></td>
-                                <td><%out.print(each.getCardHolder());%></td>
-                                <td><%out.print(each.getCardLimit());%></td>
-                                <td><%out.print(each.getCardAvailable());%></td>
-                                <td class="row justify-content-around">
-                                    <a href="remove?number=<%=each.getCardNumber()%>">
-                                        <i class="col-1 bi bi-trash-fill text-danger"></i>
-                                    </a>
-                                    <a href="updateCard.jsp?number=<%=each.getCardNumber()%>">
-                                        <i class="col-1 bi bi-pencil-square text-warning"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        <%}%>
-                    </tbody>
-                </table>
+<div id="myBankSlide" class="carousel slide" data-bs-ride="carousel">
+    <!-- indicators -->
+    <div class="carousel-indicators bg-danger">
+        <button type="button" data-bs-target="#myBankSlide" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#myBankSlide" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#myBankSlide" data-bs-slide-to="2"></button>
+        <button type="button" data-bs-target="#myBankSlide" data-bs-slide-to="3"></button>
+    </div>
+    <!-- inner items -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img style="height: 700px;" class="d-block w-100" src="items/management.png" />
+        </div>
+        <div class="carousel-item">
+            <img style="height: 700px;" class="d-block w-100" src="items/update.png" />
+        </div>
+        <div class="carousel-item">
+            <img style="height: 700px;" class="d-block w-100" src="items/transaction.png" />
+        </div>
+        <div class="carousel-item">
+            <img style="height: 700px;" class="d-block w-100" src="items/operations.png" />
+            <div class="carousel-caption">
+                <p class="text-danger">Operations such as Transfer, Withdraw and Deposit</p>
+                <a class="btn btn-outline-danger" href="https://github.com/razzaksr/DLTE-Java-Full-Stack-Development-Razak-Mohamed-2024/tree/master/DLTE-Java/DLTE-Java-MyBankCreditCard-ConsoleApp">
+                    <h3>github <span class="bi bi-github"></span></h3>
+                </a>
             </div>
         </div>
     </div>
-<%--    <a href="mockCards.jsp">Mock cards</a>--%>
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#myBankSlide" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-danger" aria-hidden="true"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myBankSlide" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-danger"></span>
+    </button>
+</div>
 </body>
 </html>
