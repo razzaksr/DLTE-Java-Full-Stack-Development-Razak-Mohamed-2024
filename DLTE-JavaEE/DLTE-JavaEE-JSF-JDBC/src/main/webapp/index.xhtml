@@ -27,6 +27,9 @@
                 <f:facet name="header">Credit card usage</f:facet>
                 #{card.cardUsage}
             </h:column>
+            <h:column>
+                <h:commandButton value="Remove" action="#{creditCRUDs.removeCard(card)}" />
+            </h:column>
         </h:dataTable>
     </h:form>
 

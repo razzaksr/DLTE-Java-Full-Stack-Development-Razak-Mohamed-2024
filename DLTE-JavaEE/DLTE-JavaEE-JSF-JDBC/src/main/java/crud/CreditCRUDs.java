@@ -51,4 +51,8 @@ public class CreditCRUDs {
         services.callSave(currentCard);
         currentCard=new CreditCard();
     }
+
+    public void removeCard(CreditCard creditCard){
+        services.callDelete(creditCard);
+    }
 }
