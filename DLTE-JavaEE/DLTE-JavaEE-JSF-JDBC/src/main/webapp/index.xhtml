@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:body>
+    <h2>Hello World!</h2>
+    <h:form>
+        <h:dataTable value="#{creditCRUDs.creditCards}" var="card" border="2">
+            <h:column>
+                <f:facet name="header">Credit card number</f:facet>
+                #{card.cardNumber}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Credit card holder</f:facet>
+                #{card.cardHolder}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Credit card available</f:facet>
+                #{card.cardAvailable}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Credit card usage</f:facet>
+                #{card.cardUsage}
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputText value="Card Number" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardNumber}" />
+
+            <h:outputText value="Card Cvv" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardCvv}" />
+
+            <h:outputText value="Card Expiry" />
+            <h:inputText converter="dateTranslate" value="#{creditCRUDs.currentCard.cardExpiry}" />
+
+            <h:outputText value="Card Pin" />
+            <h:inputSecret value="#{creditCRUDs.currentCard.cardPin}" />
+
+            <h:outputText value="Card Usage" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardUsage}" />
+
+            <h:outputText value="Card Available" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardAvailable}" />
+
+            <h:outputText value="Card Limit" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardLimit}" />
+
+            <h:outputText value="Card Status" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardStatus}" />
+
+            <h:outputText value="Card Holder" />
+            <h:inputText value="#{creditCRUDs.currentCard.cardHolder}" />
+
+        </h:panelGrid>
+        <h:commandButton value="Approve" action="#{creditCRUDs.addCard}" />
+    </h:form>
+
+</h:body>
+
+
+</html>
