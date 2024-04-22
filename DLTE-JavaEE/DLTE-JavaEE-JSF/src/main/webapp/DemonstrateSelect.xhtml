@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:view>
+<!--    <h:form>-->
+<!--        <h:inputText value="#{myPortfolio.customerId}" />-->
+<!--        <h:inputText value="#{myPortfolio.customerName}" />-->
+<!--&lt;!&ndash;        <h:selectOneListbox value="#{myPortfolio.myProfitable}">&ndash;&gt;-->
+<!--&lt;!&ndash;            <f:selectItems value="#{myPortfolio.stocks}"/>&ndash;&gt;-->
+<!--&lt;!&ndash;        </h:selectOneListbox>&ndash;&gt;-->
+<!--        <h:selectOneRadio value="#{myPortfolio.myProfitable}">-->
+<!--            <f:selectItems value="#{myPortfolio.stocks}"/>-->
+<!--        </h:selectOneRadio>-->
+
+<!--        <h:commandButton value="Gather" action="ViewMyPortfolio.xhtml"/>-->
+<!--    </h:form>-->
+
+    <h:form>
+        <h:inputText value="#{myPortfolio.customerId}" />
+        <h:inputText value="#{myPortfolio.customerName}" />
+        <h:selectManyCheckbox value="#{myPortfolio.wishList}">
+            <f:selectItems value="#{myPortfolio.stocks}"/>
+        </h:selectManyCheckbox>
+
+        <h:commandButton value="Gather"/>
+    </h:form>
+    <p>My data #{myPortfolio.customerId} #{myPortfolio.customerName} #{myPortfolio.wishList}</p>
+
+</f:view>
+
+</html>
