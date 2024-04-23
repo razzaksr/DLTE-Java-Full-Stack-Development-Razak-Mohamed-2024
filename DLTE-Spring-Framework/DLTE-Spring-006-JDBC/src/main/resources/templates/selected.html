@@ -6,5 +6,12 @@
 </head>
 <body>
 <h1 th:text="${selectedProduct}"></h1>
+<h1 th:text="${added}"></h1>
+<form th:action="@{'/web/send'}" method="post">
+    <input type="text" name="productName1" />
+    <input type="text" name="productName2" />
+    <input type="text" name="productName3" />
+    <input type="submit" value="ADD" />
+</form>
 </body>
 </html>
