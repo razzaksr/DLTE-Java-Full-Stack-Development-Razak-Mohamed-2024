@@ -54,6 +54,7 @@ public class CardSecureConfig {
         httpSecurity.csrf().disable();
 
         httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/web/**","/pics/**").permitAll();
 
         httpSecurity.authorizeRequests().antMatchers("/credit/view").hasAuthority("manager");
         httpSecurity.authorizeRequests().antMatchers("/credit/one/*").hasAnyAuthority("cashier","clerk");

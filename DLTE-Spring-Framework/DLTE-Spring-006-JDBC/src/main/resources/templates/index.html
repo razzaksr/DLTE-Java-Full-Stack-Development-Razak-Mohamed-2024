@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyBank Credit-Assist</title>
+    <link rel="stylesheet" th:href="@{'/pics/myBank.css'}">
+</head>
+<body>
+<!--    <h1>MyBank credit card APP</h1>-->
+    <h1 th:text="${'MyBank credit card APP'}"></h1>
+    <h2 style="color: red;background-color:black " th:text="${error}"></h2>
+    <h2 style="color: white;background-color:black " th:text="${greet}"></h2>
+    <img th:src="@{'/pics/corporate.ico'}" width="100%" height="100%" alt="Corporate image"/>
+    <a th:href="@{'/web/2'}">Read one data</a>
+</body>
+</html>
