@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>MyBank Credit card customers</title>
@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
+    <h1 class="text-danger text-end" th:text="${error}"></h1>
+    <h1 class="text-success text-center" th:text="${message}"></h1>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-md-8 col-12 table-responsive p-5 shadow-ld rounded-3">
@@ -18,6 +20,7 @@
                         <tr>
                             <th>Credit card Number</th><th>Credit card Holder</th>
                             <th>Credit card Limit</th><th>Credit card Available</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -26,6 +29,14 @@
                             <td><p th:text="${credit.creditcardHolder}"></p></td>
                             <td><p th:text="${credit.creditcardLimit}"></p></td>
                             <td><p th:text="${credit.creditcardAvailable}"></p></td>
+                            <td class="flex justify-content-around">
+                                <a class="btn btn-outline-danger" th:href="@{'/web/find/'+${credit.creditcardNumber}}">
+                                    Block
+                                </a>
+                                <a class="btn btn-outline-primary" th:href="@{'/web/shop/'+${credit.creditcardNumber}}">
+                                    Purchase
+                                </a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

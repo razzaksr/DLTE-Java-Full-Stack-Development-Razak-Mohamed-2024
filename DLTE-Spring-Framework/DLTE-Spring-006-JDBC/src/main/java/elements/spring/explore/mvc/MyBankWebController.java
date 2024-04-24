@@ -70,6 +70,54 @@ public class MyBankWebController {
 
     }
 
+    @RequestMapping(value="/find/{cardNumber}",method = RequestMethod.GET)
+    public String findCard(@PathVariable Long cardNumber, Model model){
+        CreditCard creditCard = myBankService.apiFindById(cardNumber).get();
+        model.addAttribute("creditCard",creditCard);
+        return "block";
+    }
+
+    @RequestMapping(value = "/block", method = RequestMethod.POST)
+    public String blockCard(@RequestParam("creditcardNumber") Long creditcardNumber,@RequestParam("creditcardPin") Integer creditcardPin , Model model){
+        try{
+            myBankService.apiBlock(creditcardNumber, creditcardPin);
+            return "redirect:/web/view";
+        }
+        catch (CardException cardException){
+            model.addAttribute("error",cardException.toString());
+            return "customers";
+        }
+
+    }
+
+    @RequestMapping(value="/shop/{cardNumber}",method = RequestMethod.GET)
+    public String findCardToShop(@PathVariable Long cardNumber, Model model){
+        CreditCard creditCard = myBankService.apiFindById(cardNumber).get();
+        model.addAttribute("creditCard",creditCard);
+        return "purchase";
+    }
+
+    @RequestMapping(value="/buy",method = RequestMethod.POST)
+    public String spentAndUpdate(@RequestParam("creditcardNumber") Long creditcardNumber,
+                                 @RequestParam("creditcardPin") Integer creditcardPin,
+                                 @RequestParam("amount") Integer amount,
+                                 Model model){
+        try{
+            CreditCard creditCard = myBankService.apiFindById(creditcardNumber).get();
+            if(creditCard.getCreditcardPin().equals(creditcardPin)){
+                myBankService.apiUpdate(creditCard,amount);
+                model.addAttribute("message","Purchase success");
+            }
+            else{
+                model.addAttribute("error","Invalid transaction");
+            }
+        }
+        catch (CardException cardException){
+            model.addAttribute("error",cardException.toString());
+        }
+        return "customers";
+    }
+
 //    @GetMapping("/")
 //    @RequestMapping(value = "/",method = RequestMethod.GET)
 //    public String myTemplate(Model model){
