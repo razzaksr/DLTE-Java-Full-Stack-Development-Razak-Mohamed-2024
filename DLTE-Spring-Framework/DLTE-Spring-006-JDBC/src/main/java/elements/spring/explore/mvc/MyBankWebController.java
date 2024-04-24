@@ -41,10 +41,10 @@ public class MyBankWebController {
     }
 
     @RequestMapping(value="/review",method = RequestMethod.POST)
-    public String approveOrReject(@Valid CreditCard creditCard, Model model, BindingResult bindingResult){
+    public String approveOrReject(@Valid CreditCard creditCard, BindingResult bindingResult,Model model ){
         try{
             if(!bindingResult.hasErrors()){
-            creditCard = myBankService.apiSave(creditCard);
+            //creditCard = myBankService.apiSave(creditCard);
             model.addAttribute("status",creditCard.getCreditcardNumber()+" has inserted");
             }
         }

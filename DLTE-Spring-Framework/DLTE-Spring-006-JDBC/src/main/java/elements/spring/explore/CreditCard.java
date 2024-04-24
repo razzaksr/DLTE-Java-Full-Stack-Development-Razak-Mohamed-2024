@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Future;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -33,8 +30,8 @@ public class CreditCard {
     @NotNull(message = "{card.status}")
     private boolean creditcardStatus;
 
-    @NotNull(message = "{card.holder.null}")
-    @Pattern(regexp = "^[a-zA-Z\\s]*$",message = "{card.holder}")
+    @NotEmpty(message = "{card.holder.null}")
+    @Pattern(regexp = "^[a-zA-Z\\s]+$",message = "{card.holder}")
     private String creditcardHolder;
 
     public CreditCard() {
