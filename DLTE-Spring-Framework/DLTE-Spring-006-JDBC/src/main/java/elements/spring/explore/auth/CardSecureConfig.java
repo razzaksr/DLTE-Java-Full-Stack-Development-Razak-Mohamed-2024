@@ -47,14 +47,17 @@ public class CardSecureConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.httpBasic();
-        httpSecurity.formLogin().
+
+        httpSecurity.authorizeRequests().antMatchers("/web/").permitAll();
+        httpSecurity.logout().permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
+        httpSecurity.authorizeRequests().antMatchers("/pics/**").permitAll();
+
+        httpSecurity.formLogin().loginPage("/web/").
                 usernameParameter("username").
                 failureHandler(officialsFailureHandler).
                 successHandler(officialsSuccessHandler);
         httpSecurity.csrf().disable();
-
-        httpSecurity.authorizeRequests().antMatchers("/profile/register").permitAll();
-        httpSecurity.authorizeRequests().antMatchers("/web/**","/pics/**").permitAll();
 
         httpSecurity.authorizeRequests().antMatchers("/credit/view").hasAuthority("manager");
         httpSecurity.authorizeRequests().antMatchers("/credit/one/*").hasAnyAuthority("cashier","clerk");

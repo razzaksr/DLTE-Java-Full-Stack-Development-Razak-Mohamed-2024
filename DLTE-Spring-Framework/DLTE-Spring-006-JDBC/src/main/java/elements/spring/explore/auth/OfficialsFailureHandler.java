@@ -33,17 +33,24 @@ public class OfficialsFailureHandler extends SimpleUrlAuthenticationFailureHandl
                     service.updateAttempts(myBankOfficials);
                     logger.warn("Invalid credentials and attempts taken");
                     exception=new LockedException("Attempts are taken");
+                    String err = myBankOfficials.getAttempts()+" "+exception.getMessage();
+                    logger.warn(err);
+                    super.setDefaultFailureUrl("/web/?error="+err);
                 }
                 else{
                     service.updateStatus(myBankOfficials);
                     exception=new LockedException("Max Attempts reached account is suspended");
+                    super.setDefaultFailureUrl("/web/?error="+exception.getMessage());
                 }
             }
-            else{
-                logger.warn("Account suspended contact admin to redeem");
-            }
+//            else{
+//                logger.warn("Account suspended contact admin to redeem");
+//                super.setDefaultFailureUrl("/web/?error=Account suspended contact admin to redeem");
+//            }
         }
-        super.setDefaultFailureUrl("/login?error=true");
+        else{
+            super.setDefaultFailureUrl("/web/?error=User not exists");
+        }
         super.onAuthenticationFailure(request, response, exception);
     }
 }

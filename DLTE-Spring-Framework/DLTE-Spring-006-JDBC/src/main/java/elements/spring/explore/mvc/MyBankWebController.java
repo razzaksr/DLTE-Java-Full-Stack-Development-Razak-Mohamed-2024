@@ -38,6 +38,11 @@ public class MyBankWebController {
         return "newapply";
     }
 
+    @RequestMapping(value="/dash", method = RequestMethod.GET)
+    public String homePage(){
+        return "dashboard";
+    }
+
     @GetMapping("/")
     public String landing(){
         return "index";

@@ -11,75 +11,82 @@
     <link rel="stylesheet" th:href="@{'/pics/myBank.css'}">
 </head>
 <body>
+<div th:replace="dashboard :: collapse">
+
+</div>
 <!--    <h1>MyBank credit card APP</h1>-->
-    <h1 th:text="${'MyBank credit card APP'}"></h1>
-    <h2 style="color: red;background-color:black " th:text="${error}"></h2>
-    <h2 style="color: red;background-color:black " th:text="${status}"></h2>
-    <form action="#" th:action="@{'/web/review'}" th:object="${creditCard}" method="post" class="col-lg-4 col-md-8 col-12 p-5 rounded-5 shadow-lg align-self-center">
-        <div class="form group">
-            <label >Card Number</label>
-            <p class="text-danger" th:if="${#fields.hasErrors('creditcardNumber')}" th:errors="*{creditcardNumber}"></p>
-            <input type="text" th:field="*{creditcardNumber}" name="creditcardNumber" placeholder="Card number" class="form-control" />
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 th:text="${'MyBank credit card APP'}"></h1>
+            <h2 style="color: red;background-color:black " th:text="${error}"></h2>
+            <h2 style="color: red;background-color:black " th:text="${status}"></h2>
+            <form action="#" th:action="@{'/web/review'}" th:object="${creditCard}" method="post" class="col-lg-4 col-md-8 col-12 p-5 rounded-5 shadow-lg align-self-center">
+                <div class="form group">
+                    <label >Card Number</label>
+                    <p class="text-danger" th:if="${#fields.hasErrors('creditcardNumber')}" th:errors="*{creditcardNumber}"></p>
+                    <input type="text" th:field="*{creditcardNumber}" name="creditcardNumber" placeholder="Card number" class="form-control" />
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-6 col-12">
+                        <label >Card CVV</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardCvv')}" th:errors="*{creditcardCvv}"></p>
+                        <input type="number" th:field="*{creditcardCvv}" name="creditcardCvv" placeholder="Card cvv" class="form-control" />
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <label >Card Expiry</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardExpiry')}" th:errors="*{creditcardExpiry}"></p>
+                        <input type="date" th:field="*{creditcardExpiry}" name="creditcardExpiry" placeholder="Card expiry mm/dd/yyyy" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-6 col-12">
+                        <label >Card Limit</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardLimit')}" th:errors="*{creditcardLimit}"></p>
+                        <input type="number" th:field="*{creditcardLimit}" name="creditcardLimit" placeholder="Card limit" class="form-control" />
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <label >Card Available</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardAvailable')}" th:errors="*{creditcardAvailable}"></p>
+                        <input type="number" th:field="*{creditcardAvailable}" name="creditcardAvailable" placeholder="Card available" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-6 col-12">
+                        <label >Card Usage</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardUsage')}" th:errors="*{creditcardUsage}"></p>
+                        <input type="number" th:field="*{creditcardUsage}" name="creditcardUsage" placeholder="Card usage" class="form-control" />
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <label >Card Status</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardStatus')}" th:errors="*{creditcardStatus}"></p>
+                        <select th:field="*{creditcardStatus}" name="creditcardStatus" class="form-select">
+                            <option value="true">Active</option>
+                            <option value="false">Blocked</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-lg-6 col-12">
+                        <label >Card Holder name</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardHolder')}" th:errors="*{creditcardHolder}"></p>
+                        <input type="text" th:field="*{creditcardHolder}" name="creditcardHolder" placeholder="Card holder name" class="form-control" />
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <label >Card PIN</label>
+                        <p class="text-danger" th:if="${#fields.hasErrors('creditcardPin')}" th:errors="*{creditcardPin}"></p>
+                        <input type="password" th:field="*{creditcardPin}" name="creditcardPin" placeholder="Card pin" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-around mt-3">
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-outline-info"><h1 class="bi bi-check-circle-fill"></h1></button>
+                    </div>
+                    <div class="col-2">
+                        <button type="reset" class="btn btn-outline-secondary"><h1 class="bi bi-x-lg"></h1></button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <div class="row justify-content-between">
-            <div class="col-lg-6 col-12">
-                <label >Card CVV</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardCvv')}" th:errors="*{creditcardCvv}"></p>
-                <input type="number" th:field="*{creditcardCvv}" name="creditcardCvv" placeholder="Card cvv" class="form-control" />
-            </div>
-            <div class="col-lg-6 col-12">
-                <label >Card Expiry</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardExpiry')}" th:errors="*{creditcardExpiry}"></p>
-                <input type="date" th:field="*{creditcardExpiry}" name="creditcardExpiry" placeholder="Card expiry mm/dd/yyyy" class="form-control" />
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-lg-6 col-12">
-                <label >Card Limit</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardLimit')}" th:errors="*{creditcardLimit}"></p>
-                <input type="number" th:field="*{creditcardLimit}" name="creditcardLimit" placeholder="Card limit" class="form-control" />
-            </div>
-            <div class="col-lg-6 col-12">
-                <label >Card Available</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardAvailable')}" th:errors="*{creditcardAvailable}"></p>
-                <input type="number" th:field="*{creditcardAvailable}" name="creditcardAvailable" placeholder="Card available" class="form-control" />
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-lg-6 col-12">
-                <label >Card Usage</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardUsage')}" th:errors="*{creditcardUsage}"></p>
-                <input type="number" th:field="*{creditcardUsage}" name="creditcardUsage" placeholder="Card usage" class="form-control" />
-            </div>
-            <div class="col-lg-6 col-12">
-                <label >Card Status</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardStatus')}" th:errors="*{creditcardStatus}"></p>
-                <select th:field="*{creditcardStatus}" name="creditcardStatus" class="form-select">
-                    <option value="true">Active</option>
-                    <option value="false">Blocked</option>
-                </select>
-            </div>
-        </div>
-        <div class="row justify-content-between">
-            <div class="col-lg-6 col-12">
-                <label >Card Holder name</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardHolder')}" th:errors="*{creditcardHolder}"></p>
-                <input type="text" th:field="*{creditcardHolder}" name="creditcardHolder" placeholder="Card holder name" class="form-control" />
-            </div>
-            <div class="col-lg-6 col-12">
-                <label >Card PIN</label>
-                <p class="text-danger" th:if="${#fields.hasErrors('creditcardPin')}" th:errors="*{creditcardPin}"></p>
-                <input type="password" th:field="*{creditcardPin}" name="creditcardPin" placeholder="Card pin" class="form-control" />
-            </div>
-        </div>
-        <div class="row justify-content-around mt-3">
-            <div class="col-2">
-                <button type="submit" class="btn btn-outline-info"><h1 class="bi bi-check-circle-fill"></h1></button>
-            </div>
-            <div class="col-2">
-                <button type="reset" class="btn btn-outline-secondary"><h1 class="bi bi-x-lg"></h1></button>
-            </div>
-        </div>
-    </form>
+    </div>
 </body>
 </html>

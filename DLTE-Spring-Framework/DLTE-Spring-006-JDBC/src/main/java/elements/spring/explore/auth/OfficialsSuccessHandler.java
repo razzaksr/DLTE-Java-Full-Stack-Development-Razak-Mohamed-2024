@@ -27,11 +27,12 @@ public class OfficialsSuccessHandler extends SimpleUrlAuthenticationSuccessHandl
                 myBankOfficials.setAttempts(1);
                 service.updateAttempts(myBankOfficials);
             }
-            super.setDefaultTargetUrl("/credit/view");
+//            super.setDefaultTargetUrl("/credit/view");
+            super.setDefaultTargetUrl("/web/dash");
         }
         else{
             logger.warn("Max attempts reached contact admin");
-            super.setDefaultTargetUrl("/login");
+            super.setDefaultTargetUrl("/web/?error=contact admin");
         }
         super.onAuthenticationSuccess(request, response, authentication);
     }
