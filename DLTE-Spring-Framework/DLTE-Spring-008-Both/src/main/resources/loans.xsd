@@ -1,0 +1,56 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://loans.services"
+            xmlns:tns="http://loans.services"
+            elementFormDefault="qualified">
+
+    <xsd:complexType name="loans">
+        <xsd:sequence>
+            <xsd:element name="loanNumber" type="xsd:int"/>
+            <xsd:element name="loanName" type="xsd:string"/>
+            <xsd:element name="loanType" type="xsd:string"/>
+            <xsd:element name="loanDescription" type="xsd:string"/>
+            <xsd:element name="loanRoi" type="xsd:double"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!--    Status-->
+    <xsd:complexType name="serviceStatus">
+        <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+            <xsd:element name="message" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="updateLoanRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="loans" type="tns:loans"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="updateLoanResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xsd:element name="loans" type="tns:loans"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="callDeletionRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="loanNumber" type="xsd:int"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="callDeletionResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
