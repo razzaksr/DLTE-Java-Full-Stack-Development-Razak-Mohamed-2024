@@ -29,7 +29,7 @@ public class LoansService implements LoansRepository{
 
     @Override
     public Loans findById(int id) {
-        return jdbcTemplate.queryForObject("select * from mybank_available_loans where id=?",new Object[]{id},new BeanPropertyRowMapper<>());
+        return jdbcTemplate.queryForObject("select * from mybank_available_loans where loan_number=?",new Object[]{id},new BeanPropertyRowMapper<>(Loans.class));
     }
 
     @Override

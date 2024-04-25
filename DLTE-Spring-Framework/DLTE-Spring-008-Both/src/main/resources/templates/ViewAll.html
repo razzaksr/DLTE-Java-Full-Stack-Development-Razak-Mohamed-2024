@@ -17,6 +17,37 @@
         }
     </style>
     <script>
+        const terminate=(number)=>{
+            let soapRequest = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:loan="http://loans.services">
+                <soapenv:Header/>
+                <soapenv:Body>
+                   <loan:callDeletionRequest>
+                      <loan:loanNumber>${number}</loan:loanNumber>
+                   </loan:callDeletionRequest>
+                </soapenv:Body>
+             </soapenv:Envelope>`
+
+            $.ajax({
+                url:"http://localhost:8082/loansrepo",
+                type:"POST",
+                dataType:"xml",
+                beforeSend:function(handler){
+                    handler.setRequestHeader("SOAPAction","callDeletionRequest")
+                },
+                contentType:"text/xml;charset=utf-8",
+                data:soapRequest,
+                success:function(response){
+                    const info = $(response).find(`ns2\\:serviceStatus`).find("ns2\\:status").text()
+                    alert(info)
+                    callGetAllLoans();
+                },
+                error:function(err){
+                    const info = $(err).find(`ns2\\:serviceStatus`).find("ns2\\:status").text()
+                    alert(info)
+                }
+            })
+        }
+
         const callGetAllLoans=()=>{
             $.ajax({
                 url:"http://localhost:8082/",
@@ -65,6 +96,9 @@
     </script>
 </head>
 <body>
+<div th:replace="dashboard :: menu">
+
+</div>
 <h1>[[${#httpServletRequest.remoteUser}]]</h1>
 <div class="container">
     <div class="row justify-content-around" id="viewSection">

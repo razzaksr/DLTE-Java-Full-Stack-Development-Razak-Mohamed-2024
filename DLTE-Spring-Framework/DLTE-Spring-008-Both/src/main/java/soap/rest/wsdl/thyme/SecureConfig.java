@@ -46,10 +46,11 @@ public class SecureConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.httpBasic();
-        httpSecurity.formLogin();
+        httpSecurity.formLogin().loginPage("/ui/");
         httpSecurity.csrf().disable();
         httpSecurity.cors();
 
+        httpSecurity.authorizeRequests().antMatchers("/ui/").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/loansrepo/loans.wsdl").permitAll();
         httpSecurity.authorizeRequests().antMatchers("/v3/api-docs").permitAll();
 
