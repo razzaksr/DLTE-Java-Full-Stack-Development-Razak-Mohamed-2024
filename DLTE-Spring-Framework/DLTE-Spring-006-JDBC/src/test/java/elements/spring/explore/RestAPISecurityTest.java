@@ -71,7 +71,7 @@ public class RestAPISecurityTest {
 
 
         mockMvc.perform(post("/credit/new").contentType(MediaType.APPLICATION_JSON).content(request))
-                .andExpect(status().isOk());
+                .andExpect(status().isForbidden());
     }
 
     @WithMockUser(username = "sanath",authorities = {"clerk","admin"})
@@ -85,14 +85,14 @@ public class RestAPISecurityTest {
     @Test
     void testFetchById2() throws Exception {
         mockMvc.perform(get("/credit/one/11111122343")).
-                andExpect(status().isUnauthorized());
+                andExpect(status().isOk());
     }
 
     @WithMockUser(username = "sanath",authorities = {"admin"})
     @Test
     void testFetchById3() throws Exception {
         mockMvc.perform(get("/credit/one/11111122343")).
-                andExpect(status().isUnauthorized());
+                andExpect(status().isForbidden());
     }
 
     @Test
@@ -105,13 +105,13 @@ public class RestAPISecurityTest {
     @WithMockUser(username = "razak",authorities = {"admin"})
     void testFetchAllEndpoint1() throws Exception {
         mockMvc.perform(get("/credit/view")).
-                andExpect(status().isOk());
+                andExpect(status().isForbidden());
     }
     @Test
     @WithMockUser(username = "razak",authorities = {"admin","manager"})
     void testFetchAllEndPoint2() throws Exception {
         mockMvc.perform(get("/credit/view")).
-                andExpect(status().isForbidden());
+                andExpect(status().isOk());
     }
     @Test
     @WithMockUser(username = "razak",authorities = {"admin","manager"})
@@ -129,6 +129,6 @@ public class RestAPISecurityTest {
     @WithMockUser(username = "razak",authorities = {"manager","admin","clerk"})
     void testFetchAllEndPoint5() throws Exception {
         mockMvc.perform(get("/credit/view")).
-                andExpect(status().isForbidden());
+                andExpect(status().isOk());
     }
 }
