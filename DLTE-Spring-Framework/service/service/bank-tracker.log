@@ -1279,4 +1279,59 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 [0;39m[31m2024-04-29 17:15:18,838[0;39m [32m[INFO][0;39m layers.backend.service.BankersController http-nio-8082-exec-1 [32mController about print All the records
 [0;39m[31m2024-04-29 17:15:23,684[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown initiated...
 [0;39m[31m2024-04-29 17:15:23,684[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown completed.
+[0;39m[31m2024-04-29 17:24:33,850[0;39m [32m[INFO][0;39m layers.backend.service.ServiceApplication main [32mStarting ServiceApplication using Java 1.8.0_202 on SRDB with PID 2632 (D:\Course backups\Java\DLithe2024Feb-Corporate-TietoEvry\DLTE-Java Full Stack Development - Razak Mohamed\DLTE-Spring-Framework\service\service\target\classes started by SRDB in D:\Course backups\Java\DLithe2024Feb-Corporate-TietoEvry\DLTE-Java Full Stack Development - Razak Mohamed\DLTE-Spring-Framework\service\service)
+[0;39m[31m2024-04-29 17:24:33,854[0;39m [32m[INFO][0;39m layers.backend.service.ServiceApplication main [32mNo active profile set, falling back to 1 default profile: "default"
+[0;39m[31m2024-04-29 17:24:34,596[0;39m [32m[INFO][0;39m org.springframework.data.repository.config.RepositoryConfigurationDelegate main [32mBootstrapping Spring Data JDBC repositories in DEFAULT mode.
+[0;39m[31m2024-04-29 17:24:34,609[0;39m [32m[INFO][0;39m org.springframework.data.repository.config.RepositoryConfigurationDelegate main [32mFinished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+[0;39m[31m2024-04-29 17:24:35,111[0;39m [32m[INFO][0;39m org.springframework.boot.web.embedded.tomcat.TomcatWebServer main [32mTomcat initialized with port(s): 8080 (http)
+[0;39m[31m2024-04-29 17:24:35,120[0;39m [32m[INFO][0;39m org.apache.catalina.core.StandardService main [32mStarting service [Tomcat]
+[0;39m[31m2024-04-29 17:24:35,121[0;39m [32m[INFO][0;39m org.apache.catalina.core.StandardEngine main [32mStarting Servlet engine: [Apache Tomcat/9.0.73]
+[0;39m[31m2024-04-29 17:24:35,266[0;39m [32m[INFO][0;39m org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] main [32mInitializing Spring embedded WebApplicationContext
+[0;39m[31m2024-04-29 17:24:35,267[0;39m [32m[INFO][0;39m org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext main [32mRoot WebApplicationContext: initialization completed in 1361 ms
+[0;39m[31m2024-04-29 17:24:35,625[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Starting...
+[0;39m[31m2024-04-29 17:24:35,627[0;39m [32m[WARN][0;39m com.zaxxer.hikari.util.DriverDataSource main [32mRegistered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[0;39m[31m2024-04-29 17:24:35,721[0;39m [32m[INFO][0;39m com.zaxxer.hikari.pool.PoolBase main [32mHikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+[0;39m[31m2024-04-29 17:24:35,725[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Start completed.
+[0;39m[31m2024-04-29 17:24:35,967[0;39m [32m[WARN][0;39m org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext main [32mException encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+[0;39m[31m2024-04-29 17:24:35,969[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Shutdown initiated...
+[0;39m[31m2024-04-29 17:24:35,984[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Shutdown completed.
+[0;39m[31m2024-04-29 17:24:35,987[0;39m [32m[INFO][0;39m org.apache.catalina.core.StandardService main [32mStopping service [Tomcat]
+[0;39m[31m2024-04-29 17:24:35,998[0;39m [32m[INFO][0;39m org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener main [32m
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[0;39m[31m2024-04-29 17:24:36,020[0;39m [32m[ERROR][0;39m org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter main [32m
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+[0;39m[31m2024-04-29 17:25:43,358[0;39m [32m[INFO][0;39m layers.backend.service.ServiceApplication main [32mStarting ServiceApplication using Java 1.8.0_202 on SRDB with PID 16896 (D:\Course backups\Java\DLithe2024Feb-Corporate-TietoEvry\DLTE-Java Full Stack Development - Razak Mohamed\DLTE-Spring-Framework\service\service\target\classes started by SRDB in D:\Course backups\Java\DLithe2024Feb-Corporate-TietoEvry\DLTE-Java Full Stack Development - Razak Mohamed\DLTE-Spring-Framework\service\service)
+[0;39m[31m2024-04-29 17:25:43,361[0;39m [32m[INFO][0;39m layers.backend.service.ServiceApplication main [32mNo active profile set, falling back to 1 default profile: "default"
+[0;39m[31m2024-04-29 17:25:43,938[0;39m [32m[INFO][0;39m org.springframework.data.repository.config.RepositoryConfigurationDelegate main [32mBootstrapping Spring Data JDBC repositories in DEFAULT mode.
+[0;39m[31m2024-04-29 17:25:43,948[0;39m [32m[INFO][0;39m org.springframework.data.repository.config.RepositoryConfigurationDelegate main [32mFinished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+[0;39m[31m2024-04-29 17:25:44,322[0;39m [32m[INFO][0;39m org.springframework.boot.web.embedded.tomcat.TomcatWebServer main [32mTomcat initialized with port(s): 8082 (http)
+[0;39m[31m2024-04-29 17:25:44,328[0;39m [32m[INFO][0;39m org.apache.catalina.core.StandardService main [32mStarting service [Tomcat]
+[0;39m[31m2024-04-29 17:25:44,328[0;39m [32m[INFO][0;39m org.apache.catalina.core.StandardEngine main [32mStarting Servlet engine: [Apache Tomcat/9.0.73]
+[0;39m[31m2024-04-29 17:25:44,432[0;39m [32m[INFO][0;39m org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] main [32mInitializing Spring embedded WebApplicationContext
+[0;39m[31m2024-04-29 17:25:44,432[0;39m [32m[INFO][0;39m org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext main [32mRoot WebApplicationContext: initialization completed in 1028 ms
+[0;39m[31m2024-04-29 17:25:44,790[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Starting...
+[0;39m[31m2024-04-29 17:25:44,793[0;39m [32m[WARN][0;39m com.zaxxer.hikari.util.DriverDataSource main [32mRegistered driver with driverClassName=oracle.jdbc.driver.OracleDriver was not found, trying direct instantiation.
+[0;39m[31m2024-04-29 17:25:44,855[0;39m [32m[INFO][0;39m com.zaxxer.hikari.pool.PoolBase main [32mHikariPool-1 - Driver does not support get/set network timeout for connections. (oracle.jdbc.driver.T4CConnection.getNetworkTimeout()I)
+[0;39m[31m2024-04-29 17:25:44,858[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource main [32mHikariPool-1 - Start completed.
+[0;39m[31m2024-04-29 17:25:45,048[0;39m [32m[INFO][0;39m org.springframework.boot.web.embedded.tomcat.TomcatWebServer main [32mTomcat started on port(s): 8082 (http) with context path ''
+[0;39m[31m2024-04-29 17:25:45,059[0;39m [32m[INFO][0;39m layers.backend.service.ServiceApplication main [32mStarted ServiceApplication in 2.058 seconds (JVM running for 2.734)
+[0;39m[31m2024-04-29 17:26:07,561[0;39m [32m[INFO][0;39m org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] http-nio-8082-exec-1 [32mInitializing Spring DispatcherServlet 'dispatcherServlet'
+[0;39m[31m2024-04-29 17:26:07,562[0;39m [32m[INFO][0;39m org.springframework.web.servlet.DispatcherServlet http-nio-8082-exec-1 [32mInitializing Servlet 'dispatcherServlet'
+[0;39m[31m2024-04-29 17:26:07,564[0;39m [32m[INFO][0;39m org.springframework.web.servlet.DispatcherServlet http-nio-8082-exec-1 [32mCompleted initialization in 2 ms
+[0;39m[31m2024-04-29 17:26:07,604[0;39m [32m[INFO][0;39m layers.backend.service.BankersController http-nio-8082-exec-1 [32mController about print All the records
+[0;39m[31m2024-04-29 17:26:21,431[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown initiated...
+[0;39m[31m2024-04-29 17:26:21,438[0;39m [32m[INFO][0;39m com.zaxxer.hikari.HikariDataSource SpringApplicationShutdownHook [32mHikariPool-1 - Shutdown completed.
 [0;39m
