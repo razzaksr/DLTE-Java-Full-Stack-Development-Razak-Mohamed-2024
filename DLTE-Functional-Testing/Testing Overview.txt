@@ -1,0 +1,419 @@
+Testing Overview: Objective of testing, unit, integration, system, ui, test design, scenario, test case, execution
+
+Test coverage:
+
+Calculation of Test Coverage:
+To calculate test coverage, you need two variables:
+X: The total number of lines of code in your application that you are testing.
+Y: The number of lines of code executed by the given test cases.
+The formula for test coverage percentage is:
+Test Coverage=(X/Y​)×100%
+
+Interpreting the Result:
+The result of this calculation represents the percentage of code covered by your tests.
+For example, if you are testing 150 lines out of a total of 1000 lines of code, the test coverage would be: Test Coverage=(150/1000​)×100%=15%
+
+
+Class Coverage:
+This parameter measures the percentage of classes (or files) in your project that have been executed by your tests.
+Method Coverage:
+Method coverage assesses the percentage of methods (functions) within a class that have been executed during testing.
+Line Coverage:
+Line coverage provides insights into the percentage of lines of code that have been executed by your tests.
+Branch Coverage:
+Branch coverage focuses on control flow structures such as conditionals (if-else statements) and loops.
+For example, if you have an if-else statement, branch coverage tells you how many times both the true and false branches were executed.
+
+tools:
+SonarQube
+Jacoco
+
+IntelliJ:
+Run as more>> run TEST CLASS with coverage
+
+
+
+Testing:
+features working as per requirement:
+product/software working as per SRS/ CRS
+
+error	: developer, tester 
+bug	: not meeting requirement
+failure	: client
+
+Manual		: excel, JIRA, >> testlink, katalon, .....
+Automation   : Selenium
+
+
+types:
+	unit
+	integration
+	system
+	acceptance
+
+Agile:
+iterative and incremental
+
+principles:
+customer experience: no need to wait long
+every sprint/ iterative build will release
+accept changes in the requirement at any point
+
+Advantages:
+
+since we collaborate BA, Dev,QA together, lack comminucation is less
+
+Owner>> Project manager
+Master>> scrum master
+Developer
+QA
+
+timeline is in weeks
+fast delivery with quality product
+
+no documentation>> drawback
+
+
+SCRUM framework:
+build an software with consideration of agile principles/ methodology
+
+5-10 people
+
+Owner>> Project manager
+Master>> scrum master
+Developer
+QA
+
+Product/Project Manager/Owner/ BA:
+	features and requirement of the software
+	priority over features considering market values/ demand
+	decision maker>> accept/reject
+
+Scrum Master:
+	neither developer nor tester even not like management people
+	facilitate the agile process
+
+Developer and tester:
+
+
+SCRUM terminologies/ process:
+
+User stories: a feature/ module of the software
+eg: track orders, change delivery address, pay advance using card, need help
+by Product owner
+
+Epic : Module>> collection of user stories of specific module
+eg: track orders, change delivery address, pay advance using card, need help all are comes under MyOrders EPIC
+by owner
+
+Project/Product/Backlog: list of epics, user stories and priority
+by owner
+
+Sprint plan meeting: can be delivered by the sprint and duration will set
+by scrum master,ba,dev,qa
+
+epic, story id, title, story description, story points, allocated sprint
+
+Sprint/ Iteration/ Team of specific process execution: to complete user story in period of time(2 - 4 weeks)
+
+Sprint backlog: list of committed user stories by the sprint
+
+Scrum meeting: everyday 15 min >> Scrum call by master
+	what did the team done yesterday
+	what the team gonna do today
+	possibilities of impediments/ troubles
+
+Sprint retrospective meeting: feedback, experience of team that will help to improve next sprint
+by master including owner, dev,qa
+
+Story point(hours/days): estimation to complete an user story, fibonacci values could be points
+0 1 1 2 3 5 8 .....
+eg:
+master with dev and qa
+
+Burndown chart: remaining work in sprint, daily basis
+by master
+
+Scrum Board: jira, Kanbam,.....
+Stories	>> yet to allocate user stories
+ToDo(ready)	>> yet to sprint plan
+InProgress> planned and development in progress
+Testing		> QA
+Done		> after sprint review, retrospective meeting
+
+definition of ready>>
+user story is clear, testable, feasible, definied, 
+definition of done>>
+todo to done, peer review, review, qa test reports done
+
+QA: Quality Assurance: Project Manager
+ensure building an quality product by coordinating SDLC process
+defects: verification
+
+QC: Quality Controller: Actual testing
+ensure quality testing is happening @ testing phase
+	manual tester: coding is not mandate
+	automation tester: coding is mandate since using tools(selenium, junit..)
+
+QE: Quality Engineering: automation tester
+SoftE: coding develop
+SystE: debug
+QE:    test via code
+
+
+System testing: QC, QE - actual tester
+
+QC - Black box testing:
+	UI: User interface >> GUI>> 
+		scales and size
+		boundries of components
+		componenets events
+		colors, font
+		images
+		..........
+
+	functionality: based on SRS
+		Object related attributes/properties testing
+		database testing: 
+			Create Read Update Delete List
+			Data manipulation language
+			
+			column/ field data 
+			length
+			type
+			triggers
+			function, indicies
+			
+		Error testing:
+			giving an proper message and another chance
+		ALU/ Calculation/ Manipulation testing:
+			
+		Link Existance/ execution: internal, external, broken
+		Cookies and sessions:
+			
+
+	Non functional: load, power
+		performance:
+			load: gradually(one by one) increase sessions
+			stress: sudden increse of sessions
+			volume: transactions of data and operations
+		Security:
+			authentication: login faild/success
+			authorisation: logged users features enabled/disabled
+		Recovery:
+			abnormal to normal
+		Compatability:
+			forward compatability
+			backward compatability
+			hardware compatability
+		installation:
+			installation wizard
+			uninstall
+		sanitation/ garbage
+			extra feature / bug
+
+
+	Usability: expectation
+		support of troubleshooting @ client side
+
+Regression Test:
+	test bug module and integrated module 
+	unit:
+		bug module
+	regional:
+		integrated modules with bug module
+	full:
+		when more multiple bug modules then perform
+		full regression test
+ReTest:
+	between builds to check whether bug of early build has sorted out in current build
+
+smoke test:
+	when stable build gets satisfies basic testing we allow them for system, regression and re test
+	
+sanitery test:
+	stable
+	regression part
+
+Exploratory test:
+	application build even though srs not available
+	prepare document by testers
+	complete understand>> optional
+	
+	time consumption
+	misunderstand
+
+adhoc testing:
+	application build even though srs not available	
+	complete understand
+	unplanned
+	application crash/ break
+	eg:
+		instagram
+
+Monkey/ Gorilla testing:
+	without SRS/ test case
+	without application knowledge
+	eg:
+		games, sites
+
+Positive test:
+	correct test case which performes on the module in order to pass
+	
+	password: alpha,number,spl
+
+Negative test:
+	wrong test case which performes on the module in order to fail
+	
+	password: 
+
+end to end test:
+	all modules from login to logout
+
+Acceptance testing: client/ end user
+	alpha>> visiting on company to test
+	beta >> client environment
+
+
+STLC >> testing life cycle: Analysis, test plan,environment setup, test case development, execution, closure
+
+use case: designing in form of diagram which illustrate requirement by BusinessAnalyst
+	Actor/ User
+	Action/ Process
+	Re-Action/ Outcome	
+
+test case: design of test procedure(step by step how to test) by test engineers
+	test inputs, expected result, actual result
+
+test scenario: module where perform test(what going to be tested)
+	eg: sign up, submission, read, report email,fund transfer
+
+
+
+	
+
+Responsibilities:
+Analysis: QA/ Project Manager/ BA
+	input: audio, video, text
+	output: SRS
+test plan: Team lead(80), Manger (20)
+	input: SRS, functionality(FRS)
+	output: Test plan document, 
+   activities:		
+	scope>> include,exclude, environment
+	review
+	strategy, defect procedure, roles, schedule, outcome, pricing, criterias(input/output), abort(suspension)-recovery(resumption), tools, risk, approvals
+
+test case design: lead(20), engineers(80)
+	input: test plan document,SRS, designs
+	output: test case document, traceable matrix(fun id,test case id, action)
+	
+   activities:
+	test suite: list of test cases for respective scenario
+	scenarios: signup,login,forget password	
+	prepare case: smoke case, +case, -case
+	review
+	traceable matrix:
+	approval
+   test case document template:
+	test case id, title, description, pre-condition 
+	priority: p0(smoke),p1(regression),p2(func),p3(re test/ non functional)
+	requirement id
+	Actions/Step
+	Expected
+	Actual
+	test data
+   traceable matrix(fun id,test case id, action):RTM
+	Mapping of req and test
+	req id, req des, test case id
+	eg: Gpay fund transfer
+	req id 		des		tc id		status
+	78		account maped	tc 01,100..	01-pass,100-fail
+	120		receipient info	80,95,110	80-pass,95-fail,110-fail
+
+environment setup: Test Bed>> execution run over this system
+	resembleness of client system(requires soft,hardware)
+	build run on this env
+	
+
+execution: QC-QE(90-95), lead(5-10)
+	input: test plan, test case doc, build(developer)
+	output: test reports/log
+	developer - QA -test
+   activities:
+	executing all test cases in test case doc
+		status: marked,passed,failed,block,run,other
+	prepare test log/report to QA/PM
+		failed bugs
+	identify bug/defect:assigned bug id
+		tools: DevTrack, Jira, Quality center, Bug jilla
+	re test: once bug fixed
+	track on defect will be happen untill approval
+report: QE(test script-automation),QC(80-90),lead(10-20)
+	input: test log
+	output: test/defect report
+   activities:
+	defect report >> Developer
+		
+	
+closure: manager/lead(70-80), engineers(20-30)
+	input:test report,defect report
+	output: Test Summary
+
+   activities:
+	analyse reports: test report, bug report, outcome criteria
+
+
+Bug/ defect report:
+
+a. defect id
+b. description>> about which function/ module
+c. version>> build version
+d. Steps: screenshort
+e. date of raised
+f. reference>> srs,uml,screen short...
+g. detect by whom>> tester id/ name
+h. status>> stage where bug is
+i. fixed by>> developer id
+j. date of closed
+k. severity>> impact on application
+	block>> stops the total application/site to proceed
+		eg: network domain name/ welcome page site
+	Critical>> application can be run but important functionality wouldn't 			work
+		eg: in e-commerce placing an order is not working
+	Major>> site/ functionality is working but depended one / reposnse 		wouldn't get
+		eg:
+			tracking id couldn't get after submission of ITR
+	Minor>> Functionality/ site wouldn't halt
+		eg: ITR >> submit button size small 
+
+l. priority>> how much important/ soon should be to fix
+	p0>> high>> it has to be addressed by devloper
+	p1>> medium>> it can get respond til new build get generated
+	p2>> low>> it can be fixed after one or more build releases
+	
+	eg:
+	severity			priority
+					p0			p1
+	critical/blocker	blank link of welcome site	Wishlist isn't
+	Minor			MyOrders>> last 2 orders	Toast not show
+								after added to
+								kart
+
+Resolving an defects: Developer - DevManager - TestManager - Tester
+	using status
+		Accept
+		Reject
+		Duplicate
+		Enhancement
+		Less information
+		Fixed
+		As Designed
+
+STLC: Test Closure:
+	when to close: Time, Coverage, Cost, Software, Critical BO, Quality
+	prepare test metrics
+	learn document: test report, bug report>> severity, priority
+	prepare test summary
+	
+	Outcome: Test Summary, metrics
