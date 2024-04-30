@@ -20,19 +20,19 @@ public class MyBankService {
 
     public String apiBlock(Long number, Integer pin){
         // this commented block will be used on testing since the jdbcTemplate update method return 1 or 0 based on that
-//        jdbcTemplate.update("delete from mybank_creditcard where creditcard_number=? and creditcard_pin=?",
-//                new Object[]{
-//                        number,pin
-//                });
-//        return number+" card is blocked";
-        int ack = jdbcTemplate.update("delete from mybank_creditcard where creditcard_number=? and creditcard_pin=?",
+        jdbcTemplate.update("delete from mybank_creditcard where creditcard_number=? and creditcard_pin=?",
                 new Object[]{
                         number,pin
                 });
-        if(ack!=0)
-            return number+" card is blocked";
-        else
-            throw new CardException(" Unauthorized access");
+        return number+" card is blocked";
+//        int ack = jdbcTemplate.update("delete from mybank_creditcard where creditcard_number=? and creditcard_pin=?",
+//                new Object[]{
+//                        number,pin
+//                });
+//        if(ack!=0)
+//            return number+" card is blocked";
+//        else
+//            throw new CardException(" Unauthorized access");
     }
 
     public CreditCard apiUpdate(CreditCard creditCard, int newPurchase){
@@ -63,10 +63,11 @@ public class MyBankService {
                         creditCard.isCreditcardStatus(),
                         creditCard.getCreditcardHolder()
                 });
-        if(ack!=0)
-            return creditCard;
-        else
-            throw new CardException(" due insertion failed");
+        return creditCard;
+//        if(ack!=0)
+//            return creditCard;
+//        else
+//            throw new CardException(" due insertion failed");
     }
 
     public List<CreditCard> apiByLimit(Integer limit){

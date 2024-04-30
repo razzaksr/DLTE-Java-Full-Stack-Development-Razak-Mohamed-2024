@@ -1,0 +1,147 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > CreditCardConfig</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">elements.spring.explore</a>
+</div>
+
+<h1>Coverage Summary for Class: CreditCardConfig (elements.spring.explore)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CreditCardConfig</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">CreditCardConfig$$EnhancerBySpringCGLIB$$b39af141</td>
+  </tr>
+  <tr>
+    <td class="name">CreditCardConfig$$EnhancerBySpringCGLIB$$b39af141$$FastClassBySpringCGLIB$$5f6c9cea</td>
+  </tr>
+  <tr>
+    <td class="name">CreditCardConfig$$FastClassBySpringCGLIB$$91c87430</td>
+  </tr>
+<tr>
+  <td class="name"><strong>Total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (8/8)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package elements.spring.explore;
+&nbsp;
+&nbsp;import org.springframework.context.MessageSource;
+&nbsp;import org.springframework.context.annotation.Bean;
+&nbsp;import org.springframework.context.annotation.Configuration;
+&nbsp;import org.springframework.context.support.ResourceBundleMessageSource;
+&nbsp;import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+&nbsp;
+&nbsp;@Configuration
+<b class="fc">&nbsp;public class CreditCardConfig {</b>
+&nbsp;    @Bean
+&nbsp;    public MessageSource messageSource() {
+<b class="fc">&nbsp;        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();</b>
+<b class="fc">&nbsp;        messageSource.setBasename(&quot;application&quot;);</b>
+<b class="fc">&nbsp;        messageSource.setDefaultEncoding(&quot;UTF-8&quot;);</b>
+<b class="fc">&nbsp;        return messageSource;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Bean
+&nbsp;    public LocalValidatorFactoryBean getValidator(MessageSource messageSource) {
+<b class="fc">&nbsp;        LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();</b>
+<b class="fc">&nbsp;        bean.setValidationMessageSource(messageSource);</b>
+<b class="fc">&nbsp;        return bean;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-30 09:56</div>
+</div>
+</body>
+</html>

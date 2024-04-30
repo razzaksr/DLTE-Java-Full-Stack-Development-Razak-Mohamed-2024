@@ -1,0 +1,222 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > MyBankController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">elements.spring.explore</a>
+</div>
+
+<h1>Coverage Summary for Class: MyBankController (elements.spring.explore)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MyBankController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    40%
+  </span>
+  <span class="absValue">
+    (4/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    25%
+  </span>
+  <span class="absValue">
+    (9/36)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package elements.spring.explore;
+&nbsp;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.http.HttpStatus;
+&nbsp;import org.springframework.http.ResponseEntity;
+&nbsp;import org.springframework.validation.FieldError;
+&nbsp;import org.springframework.web.bind.MethodArgumentNotValidException;
+&nbsp;import org.springframework.web.bind.annotation.*;
+&nbsp;
+&nbsp;import javax.validation.Valid;
+&nbsp;import java.sql.SQLException;
+&nbsp;import java.sql.SQLSyntaxErrorException;
+&nbsp;import java.util.*;
+&nbsp;
+&nbsp;@RestController
+&nbsp;@RequestMapping(&quot;/credit&quot;)
+<b class="fc">&nbsp;public class MyBankController {</b>
+&nbsp;    @Autowired
+&nbsp;    MyBankService myBankService;
+&nbsp;
+<b class="fc">&nbsp;    Logger logger= LoggerFactory.getLogger(MyBankController.class);</b>
+&nbsp;
+&nbsp;    @DeleteMapping(&quot;/block/{number}/{pin}&quot;)
+&nbsp;    public String suspend(@PathVariable(&quot;number&quot;) Long number,@PathVariable(&quot;pin&quot;) Integer pin){
+&nbsp;        try{
+<b class="nc">&nbsp;            return myBankService.apiBlock(number,pin);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch (CardException cardException){</b>
+<b class="nc">&nbsp;            logger.warn(cardException.toString());</b>
+<b class="nc">&nbsp;            return cardException.toString();</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @PutMapping(&quot;/swipe/{purchase}&quot;)
+&nbsp;    public CreditCard swipe(@PathVariable(&quot;purchase&quot;) Integer purchase, @RequestBody CreditCard creditCard){
+<b class="nc">&nbsp;        CreditCard creditCard1=new CreditCard();</b>
+&nbsp;        try{
+<b class="nc">&nbsp;            creditCard1=myBankService.apiUpdate(creditCard,purchase);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch (CardException cardException){</b>
+<b class="nc">&nbsp;            logger.warn(cardException.toString());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return creditCard1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/insert&quot;)
+&nbsp;    public ResponseEntity&lt;Object&gt; save(@Valid @RequestBody CreditCard creditCard){
+<b class="nc">&nbsp;        CreditCard creditCard1=null;</b>
+&nbsp;        try{
+<b class="nc">&nbsp;            creditCard1=creditCard;</b>
+&nbsp;//            creditCard1 = myBankService.apiSave(creditCard);
+&nbsp;        }
+<b class="nc">&nbsp;        catch (CardException cardException){</b>
+<b class="nc">&nbsp;            logger.warn(cardException.toString());</b>
+&nbsp;        }
+<b class="nc">&nbsp;        return ResponseEntity.ok(creditCard1);</b>
+&nbsp;    }
+&nbsp;    @ResponseStatus(HttpStatus.BAD_REQUEST)
+&nbsp;    @ExceptionHandler(MethodArgumentNotValidException.class)
+&nbsp;    public Map&lt;String, String&gt; handleValidationExceptions(
+&nbsp;            MethodArgumentNotValidException ex) {
+<b class="nc">&nbsp;        Map&lt;String, String&gt; errors = new HashMap&lt;&gt;();</b>
+<b class="nc">&nbsp;        ex.getBindingResult().getAllErrors().forEach((error) -&gt; {</b>
+<b class="nc">&nbsp;            String fieldName = ((FieldError) error).getField();</b>
+<b class="nc">&nbsp;            String errorMessage = error.getDefaultMessage();</b>
+<b class="nc">&nbsp;            errors.put(fieldName, errorMessage);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return errors;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @PostMapping(&quot;/new&quot;)
+&nbsp;    public CreditCard saved(@RequestBody CreditCard creditCard){
+<b class="fc">&nbsp;        CreditCard creditCard1=null;</b>
+&nbsp;        try{
+<b class="fc">&nbsp;            creditCard1 = myBankService.apiSave(creditCard);</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch (CardException cardException){</b>
+<b class="nc">&nbsp;            logger.warn(cardException.toString());</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return creditCard1;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/limit/{amount}&quot;)
+&nbsp;    public List&lt;CreditCard&gt; gettingLimit(@PathVariable(&quot;amount&quot;) Integer amount){
+<b class="nc">&nbsp;        return myBankService.apiByLimit(amount);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/one/{number}&quot;)
+&nbsp;    public Optional&lt;CreditCard&gt; gettingOne(@PathVariable(&quot;number&quot;) Long number){
+<b class="fc">&nbsp;        return myBankService.apiFindById(number);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @GetMapping(&quot;/view&quot;)
+&nbsp;    public List&lt;CreditCard&gt; fetchAll(){
+<b class="fc">&nbsp;        List&lt;CreditCard&gt; myList=new ArrayList&lt;&gt;();</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            myList = myBankService.apiFindAll();</b>
+<b class="nc">&nbsp;        } catch (SQLSyntaxErrorException e) {</b>
+&nbsp;//            return ResponseEntity.internalServerError().body(new CardException(&quot; Due to system failure&quot;));
+<b class="nc">&nbsp;            logger.error(String.valueOf(new CardException(&quot;Due to System failure&quot;)));</b>
+&nbsp;        }
+<b class="nc">&nbsp;        catch (CardException cardException){</b>
+<b class="nc">&nbsp;            logger.error(String.valueOf(new CardException()));</b>
+&nbsp;        }
+<b class="fc">&nbsp;        return myList;</b>
+&nbsp;//        try {
+&nbsp;//            return ResponseEntity.ok(myBankService.apiFindAll());
+&nbsp;//        } catch (SQLSyntaxErrorException e) {
+&nbsp;////            return ResponseEntity.internalServerError().body(new CardException(&quot; Due to system failure&quot;));
+&nbsp;//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new CardException(&quot; Due to system failure&quot;));
+&nbsp;//        }
+&nbsp;//        catch (CardException cardException){
+&nbsp;//            return ResponseEntity.badRequest().body(new CardException(&quot; Due to system failure&quot;));
+&nbsp;//        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-30 09:56</div>
+</div>
+</body>
+</html>

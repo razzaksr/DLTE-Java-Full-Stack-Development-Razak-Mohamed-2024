@@ -28,7 +28,7 @@ class DlteSpring006JdbcApplicationTests {
     @InjectMocks
     private MyBankService myBankService;
 
-    //@Test
+    @Test
     void testBlock(){
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/2/2029"),91000,10000,81000,1111,false,"Annapoorna Pai");
         CreditCard creditCard2=new CreditCard(98767767673L,123,new Date("10/4/2034"),100000,90000,10000,9874,true,"Varun Raj");
@@ -38,10 +38,9 @@ class DlteSpring006JdbcApplicationTests {
         String info = myBankService.apiBlock(creditCard1.getCreditcardNumber(), creditCard1.getCreditcardPin());
 
         assertEquals("11111122343 card is blocked",info);
-        //assertEquals("11111122343 card is blocked",info);
     }
 
-    //@Test
+    @Test
     void testApprove(){
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/2/2029"),91000,10000,81000,1111,false,"Annapoorna Pai");
         CreditCard creditCard2=new CreditCard(98767767673L,123,new Date("10/4/2034"),100000,90000,10000,9874,true,"Varun Raj");
@@ -50,11 +49,11 @@ class DlteSpring006JdbcApplicationTests {
         CreditCard actual = myBankService.apiSave(creditCard2);
 //        System.out.println(actual.getCreditcardHolder());
 
-//        assertEquals(creditCard1.getCreditcardHolder(),actual.getCreditcardHolder());
-        assertFalse(creditCard1.isCreditcardStatus()==actual.isCreditcardStatus());
+        assertNotEquals(creditCard1.getCreditcardHolder(),actual.getCreditcardHolder());
+//        assertFalse(creditCard1.isCreditcardStatus()==actual.isCreditcardStatus());
     }
 
-    //@Test
+    @Test
     void testViewByLimit(){
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/2/2029"),91000,10000,81000,1111,false,"Annapoorna Pai");
         CreditCard creditCard2=new CreditCard(98767767673L,123,new Date("10/4/2034"),100000,90000,10000,9874,true,"Varun Raj");
@@ -69,7 +68,7 @@ class DlteSpring006JdbcApplicationTests {
 //        assertFalse(expectedList.size()==actual.size());
         assertEquals(expectedList,actual);
     }
-    //@Test
+    @Test
     void testViewOne(){
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/2/2029"),91000,10000,81000,1111,false,"Annapoorna Pai");
         CreditCard creditCard2=new CreditCard(98767767673L,123,new Date("10/4/2034"),100000,90000,10000,9874,true,"Varun Raj");
@@ -83,7 +82,7 @@ class DlteSpring006JdbcApplicationTests {
         assertNotSame(creditCard2.getCreditcardCvv(),actualOne.get().getCreditcardCvv());
     }
 
-    //@Test
+    @Test
     void testViewAll() throws SQLSyntaxErrorException {
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/2/2029"),91000,10000,81000,1111,false,"Annapoorna Pai");
         CreditCard creditCard2=new CreditCard(98767767673L,123,new Date("10/4/2034"),100000,90000,10000,9874,true,"Varun Raj");

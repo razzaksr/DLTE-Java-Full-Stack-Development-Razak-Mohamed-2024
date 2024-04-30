@@ -1,0 +1,243 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > CreditCard</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">elements.spring.explore</a>
+</div>
+
+<h1>Coverage Summary for Class: CreditCard (elements.spring.explore)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CreditCard</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    47.6%
+  </span>
+  <span class="absValue">
+    (10/21)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (10/30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package elements.spring.explore;
+&nbsp;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.beans.factory.annotation.Value;
+&nbsp;import org.springframework.stereotype.Component;
+&nbsp;
+&nbsp;import javax.validation.constraints.*;
+&nbsp;import java.io.Serializable;
+&nbsp;import java.util.Date;
+&nbsp;import java.util.ResourceBundle;
+&nbsp;public class CreditCard {
+&nbsp;    // creditCardNumber = credit_card_number
+&nbsp;    @NotNull(message = &quot;{card.number.null}&quot;)
+&nbsp;    private Long creditcardNumber;
+&nbsp;    @NotNull(message = &quot;{card.cvv.null}&quot;)
+&nbsp;    @Digits(integer = 3, fraction = 0, message = &quot;{card.cvv}&quot;)
+&nbsp;    private Integer creditcardCvv;
+&nbsp;    @NotNull(message = &quot;{card.expiry.null}&quot;)
+&nbsp;    @Future(message = &quot;{card.expiry}&quot;)
+&nbsp;    private Date creditcardExpiry;
+&nbsp;    @NotNull(message = &quot;{card.pin}&quot;)
+&nbsp;    @Digits(integer = 4, fraction = 0, message = &quot;{card.pin}&quot;)
+&nbsp;    private Integer creditcardPin;
+&nbsp;    @NotNull(message = &quot;{card.limit.null}&quot;)
+&nbsp;    private Integer creditcardLimit;
+&nbsp;    @NotNull(message = &quot;{card.usage.null}&quot;)
+&nbsp;    private Integer creditcardUsage;
+&nbsp;    @NotNull(message = &quot;{card.available.null}&quot;)
+&nbsp;    private Integer creditcardAvailable;
+&nbsp;    @NotNull(message = &quot;{card.status}&quot;)
+&nbsp;    private boolean creditcardStatus;
+&nbsp;
+&nbsp;    @NotEmpty(message = &quot;{card.holder.null}&quot;)
+&nbsp;    @Pattern(regexp = &quot;^[a-zA-Z\\s]+$&quot;,message = &quot;{card.holder}&quot;)
+&nbsp;    private String creditcardHolder;
+&nbsp;
+<b class="fc">&nbsp;    public CreditCard() {</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;CreditCard{&quot; +</b>
+&nbsp;                &quot;creditcardNumber=&quot; + creditcardNumber +
+&nbsp;                &quot;, creditcardCvv=&quot; + creditcardCvv +
+&nbsp;                &quot;, creditcardExpiry=&quot; + creditcardExpiry +
+&nbsp;                &quot;, creditcardPin=&quot; + creditcardPin +
+&nbsp;                &quot;, creditcardLimit=&quot; + creditcardLimit +
+&nbsp;                &quot;, creditcardUsage=&quot; + creditcardUsage +
+&nbsp;                &quot;, creditcardAvailable=&quot; + creditcardAvailable +
+&nbsp;                &quot;, creditcardStatus=&quot; + creditcardStatus +
+&nbsp;                &quot;, creditcardHolder=&#39;&quot; + creditcardHolder + &#39;\&#39;&#39; +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    public CreditCard(Long creditcardNumber, Integer creditcardCvv, Date creditcardExpiry, Integer creditcardPin, Integer creditcardLimit, Integer creditcardUsage, Integer creditcardAvailable, boolean creditcardStatus, String creditcardHolder) {</b>
+<b class="nc">&nbsp;        this.creditcardNumber = creditcardNumber;</b>
+<b class="nc">&nbsp;        this.creditcardCvv = creditcardCvv;</b>
+<b class="nc">&nbsp;        this.creditcardExpiry = creditcardExpiry;</b>
+<b class="nc">&nbsp;        this.creditcardPin = creditcardPin;</b>
+<b class="nc">&nbsp;        this.creditcardLimit = creditcardLimit;</b>
+<b class="nc">&nbsp;        this.creditcardUsage = creditcardUsage;</b>
+<b class="nc">&nbsp;        this.creditcardAvailable = creditcardAvailable;</b>
+<b class="nc">&nbsp;        this.creditcardStatus = creditcardStatus;</b>
+<b class="nc">&nbsp;        this.creditcardHolder = creditcardHolder;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Long getCreditcardNumber() {
+<b class="nc">&nbsp;        return creditcardNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardNumber(Long creditcardNumber) {
+<b class="fc">&nbsp;        this.creditcardNumber = creditcardNumber;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCreditcardCvv() {
+<b class="nc">&nbsp;        return creditcardCvv;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardCvv(Integer creditcardCvv) {
+<b class="fc">&nbsp;        this.creditcardCvv = creditcardCvv;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Date getCreditcardExpiry() {
+<b class="nc">&nbsp;        return creditcardExpiry;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardExpiry(Date creditcardExpiry) {
+<b class="fc">&nbsp;        this.creditcardExpiry = creditcardExpiry;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCreditcardPin() {
+<b class="nc">&nbsp;        return creditcardPin;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardPin(Integer creditcardPin) {
+<b class="fc">&nbsp;        this.creditcardPin = creditcardPin;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCreditcardLimit() {
+<b class="nc">&nbsp;        return creditcardLimit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardLimit(Integer creditcardLimit) {
+<b class="fc">&nbsp;        this.creditcardLimit = creditcardLimit;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCreditcardUsage() {
+<b class="nc">&nbsp;        return creditcardUsage;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardUsage(Integer creditcardUsage) {
+<b class="fc">&nbsp;        this.creditcardUsage = creditcardUsage;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getCreditcardAvailable() {
+<b class="nc">&nbsp;        return creditcardAvailable;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardAvailable(Integer creditcardAvailable) {
+<b class="fc">&nbsp;        this.creditcardAvailable = creditcardAvailable;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public boolean isCreditcardStatus() {
+<b class="nc">&nbsp;        return creditcardStatus;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardStatus(boolean creditcardStatus) {
+<b class="fc">&nbsp;        this.creditcardStatus = creditcardStatus;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getCreditcardHolder() {
+<b class="nc">&nbsp;        return creditcardHolder;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCreditcardHolder(String creditcardHolder) {
+<b class="fc">&nbsp;        this.creditcardHolder = creditcardHolder;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-30 09:56</div>
+</div>
+</body>
+</html>

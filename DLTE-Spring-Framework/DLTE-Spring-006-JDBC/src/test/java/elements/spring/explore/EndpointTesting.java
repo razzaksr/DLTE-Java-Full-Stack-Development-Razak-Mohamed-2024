@@ -10,6 +10,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -49,7 +50,8 @@ public class EndpointTesting {
 //
 //    }
 
-    //@Test
+    @Test
+    @WithMockUser(username = "akash", authorities = {"admin"})
     void testApproval() throws Exception {
         String request="{\n" +
                 "    \"creditcardNumber\": 56787676767,\n" +
@@ -82,7 +84,8 @@ public class EndpointTesting {
 //        ;
     }
 
-    //@Test
+    @Test
+    @WithMockUser(username = "akash", authorities = {"cashier"})
     void testFetchById() throws Exception {
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/1/2029"),9100,10000,8000,2000,false,"Annapoorna Pai");
         when(myBankService.apiFindById(eq(11111122343L))).thenReturn(Optional.of(creditCard1));
@@ -99,7 +102,8 @@ public class EndpointTesting {
                 andExpect(jsonPath("$.creditcardHolder").value("Annapoorna Pai"));
     }
 
-    //@Test
+    @Test
+    @WithMockUser(username = "akash", authorities = {"manager"})
     void testFetchAllEndpoint() throws Exception {
         CreditCard creditCard1=new CreditCard(11111122343L,383,new Date("12/1/2029"),9100,10000,8000,2000,false,"Annapoorna Pai");
         CreditCard creditCard2=new CreditCard(98767767673L,123,new Date("10/4/2034"),4563,90000,10000,80000,true,"Varun Raj");

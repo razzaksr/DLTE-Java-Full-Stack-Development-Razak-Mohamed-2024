@@ -1,0 +1,171 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=windows-1252"> 
+  <title>Coverage Report > MyBankOfficialsService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">elements.spring.explore.auth</a>
+</div>
+
+<h1>Coverage Summary for Class: MyBankOfficialsService (elements.spring.explore.auth)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MyBankOfficialsService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    16.7%
+  </span>
+  <span class="absValue">
+    (1/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    10.5%
+  </span>
+  <span class="absValue">
+    (2/19)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package elements.spring.explore.auth;
+&nbsp;
+&nbsp;import org.slf4j.Logger;
+&nbsp;import org.slf4j.LoggerFactory;
+&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+&nbsp;import org.springframework.jdbc.core.BeanPropertyRowMapper;
+&nbsp;import org.springframework.jdbc.core.JdbcTemplate;
+&nbsp;import org.springframework.security.core.userdetails.UserDetails;
+&nbsp;import org.springframework.security.core.userdetails.UserDetailsService;
+&nbsp;import org.springframework.security.core.userdetails.UsernameNotFoundException;
+&nbsp;import org.springframework.stereotype.Service;
+&nbsp;
+&nbsp;@Service
+<b class="fc">&nbsp;public class MyBankOfficialsService implements UserDetailsService {</b>
+&nbsp;    @Autowired
+&nbsp;    private JdbcTemplate jdbcTemplate;
+&nbsp;
+<b class="fc">&nbsp;    Logger logger= LoggerFactory.getLogger(MyBankOfficialsService.class);</b>
+&nbsp;
+&nbsp;
+&nbsp;    public MyBankOfficials signingUp(MyBankOfficials myBankOfficials){
+<b class="nc">&nbsp;        int ack = jdbcTemplate.update(&quot;insert into mybank_officials values(?,?,?,?,?)&quot;,new Object[]{</b>
+<b class="nc">&nbsp;                myBankOfficials.getFullName(),myBankOfficials.getUsername(),</b>
+<b class="nc">&nbsp;                myBankOfficials.getPassword(),myBankOfficials.getContact(),</b>
+<b class="nc">&nbsp;                myBankOfficials.getRole()</b>
+&nbsp;        });
+<b class="nc">&nbsp;        return myBankOfficials;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public MyBankOfficials findByUsername(String username){
+<b class="nc">&nbsp;        MyBankOfficials myBankOfficials = jdbcTemplate.queryForObject(&quot;select * from mybank_officials where username=?&quot;,</b>
+&nbsp;                new Object[]{username},new BeanPropertyRowMapper&lt;&gt;(MyBankOfficials.class));
+<b class="nc">&nbsp;        return myBankOfficials;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateAttempts(MyBankOfficials myBankOfficials){
+<b class="nc">&nbsp;        jdbcTemplate.update(&quot;update mybank_officials set attempts=? where username=?&quot;,</b>
+<b class="nc">&nbsp;                new Object[]{myBankOfficials.getAttempts(),myBankOfficials.getUsername()});</b>
+<b class="nc">&nbsp;        logger.info(&quot;Attempts are updated&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void updateStatus(MyBankOfficials myBankOfficials){
+<b class="nc">&nbsp;        jdbcTemplate.update(&quot;update mybank_officials set status=0 where username=?&quot;,</b>
+<b class="nc">&nbsp;                new Object[]{myBankOfficials.getUsername()});</b>
+<b class="nc">&nbsp;        logger.info(&quot;Status has changed&quot;);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+<b class="nc">&nbsp;        MyBankOfficials officials = findByUsername(username);</b>
+<b class="nc">&nbsp;        if(officials==null)</b>
+<b class="nc">&nbsp;            throw new UsernameNotFoundException(username);</b>
+<b class="nc">&nbsp;        return officials;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2024-04-30 09:56</div>
+</div>
+</body>
+</html>
