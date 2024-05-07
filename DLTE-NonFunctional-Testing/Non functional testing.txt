@@ -1,0 +1,33 @@
+Non functional testing:
+
+Usability test: 
+	TryMeUI
+	UsabilityHub
+Security test:
+	Wappalyzer
+	Nikkto
+Compatible test:
+	Selenium 
+	Browsershots
+	Sauce Labs
+
+
+Performance test: load, stress:
+	Apache JMeter:
+	Locust
+	Tsung
+
+
+JMeter:
+Test plan:
+	thread group
+	encoding
+	user defined variables
+	http headers
+	http mappings
+	test results: tree, table, chart
+
+
+
+
+
