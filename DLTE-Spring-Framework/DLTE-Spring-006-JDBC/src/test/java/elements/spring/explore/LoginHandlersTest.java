@@ -7,9 +7,11 @@ import elements.spring.explore.auth.OfficialsSuccessHandler;
 import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -30,6 +32,44 @@ public class LoginHandlersTest {
 
     @InjectMocks
     private OfficialsFailureHandler failureHandler;
+
+    @Test
+    public void testAuthenticationFailureAttempts() throws IOException, ServletException {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        AuthenticationException exception = new LockedException("Max Attempts reached account is suspended");
+
+        String username = "testUser";
+        request.setParameter("username", username);
+        MyBankOfficials myBankOfficials = new MyBankOfficials();
+        myBankOfficials.setUsername(username);
+        myBankOfficials.setStatus(1); // Assuming status allows authentication
+        myBankOfficials.setAttempts(2); // Assuming maximum attempts are 3
+        when(myBankOfficialsService.findByUsername(username)).thenReturn(myBankOfficials);
+
+        failureHandler.onAuthenticationFailure(request, response, exception);
+
+        assertEquals("/web/?error=3 Attempts are taken", response.getRedirectedUrl());
+    }
+
+    @Test
+    public void testAuthenticationFailureSuspend() throws IOException, ServletException {
+        MockHttpServletRequest request = new MockHttpServletRequest();
+        MockHttpServletResponse response = new MockHttpServletResponse();
+        AuthenticationException exception = new LockedException("Max Attempts reached account is suspended");
+
+        String username = "testUser";
+        request.setParameter("username", username);
+        MyBankOfficials myBankOfficials = new MyBankOfficials();
+        myBankOfficials.setUsername(username);
+        myBankOfficials.setStatus(1); // Assuming status allows authentication
+        myBankOfficials.setAttempts(3); // Assuming maximum attempts are 3
+        when(myBankOfficialsService.findByUsername(username)).thenReturn(myBankOfficials);
+
+        failureHandler.onAuthenticationFailure(request, response, exception);
+
+        assertEquals("/web/?error=Max Attempts reached account is suspended", response.getRedirectedUrl());
+    }
 
     @Test
     public void testAuthenticationFailureAttemptsExceeded() throws IOException, ServletException {
